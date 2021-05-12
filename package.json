@@ -1,7 +1,7 @@
 {
   "name": "smartstart",
   "version": "1.0.0",
-  "description": "",
+  "description": "IWP",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,10 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/AritriBasu/SmartStart.git"
   },
-  "author": "",
+  "author": "ME",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AritriBasu/SmartStart/issues"
   },
-  "homepage": "https://github.com/AritriBasu/SmartStart#readme"
+  "homepage": "https://github.com/AritriBasu/SmartStart#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
 }
