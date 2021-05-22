@@ -1,0 +1,166 @@
+<!DOCTYPE html >
+<html>
+    <head>
+        <title>Startup Signup Page</title>
+        <link rel="stylesheet" text="text/css" href="main.css" />
+    </head>
+
+    <body>
+        <div id="container" style="top:1%">
+            <form action="#">
+                <h1>Startup Sign Up</h1>
+                <hr id="header_seperator" />
+                <div class="text_field_container">
+                    <input type="text"  placeholder=" " required />
+                    <span></span>
+                    <label>Company Name</label>         
+                </div>
+
+                <div class="text_field_container">
+                    <input type="text" placeholder=" " class="validation" pattern="^(U|L)\d{5}[A-Z]{2}\d{4}(PTC|PLC|SGC|OPC|NPL)\d{6}$" required />
+                    <span></span>
+                    <label>Company Incorporation Number</label>         
+                </div>
+
+                <div class="text_field_container">
+                    <input type="text" placeholder=" " class="validation" pattern="^[a-z0-9_]+@[a-z]+(\.[a-z]+)+$" required />
+                    <span></span>
+                    <label>Company Email</label>         
+                </div>
+                
+                <div class="text_field_container">
+                    <input type="password" placeholder=" " required />
+                    <span></span>
+                    <label>Password</label>         
+                </div>
+
+                <div class="text_field_container">
+                    <input type="password" placeholder=" " required />
+                    <span></span>
+                    <label>Retype Password</label>         
+                </div>
+
+                <table>
+                    <tr>
+                        <td class="left"> Nature of the entity: </td>
+                        <td class="right">
+                            <select>
+                                <option>-Select-</option>
+                                <option>Private Limited Company</option>
+                                <option>Partnership firm</option>
+                                <option>Limited Liability Partnership</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="left">Stage: </td>
+                        <td class="right">
+                            <select>
+                                <option>-Select-</option>
+                                <option>Ideation</option>
+                                <option>Validation</option>
+                                <option>Early Traction</option>
+                                <option>Scaling</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="left" colspan="2"> 
+                            <div class="text_field_container id_container">
+                                <input type="url" class="validation" placeholder=" " required />
+                                <span></span>
+                                <label>Website link</label>         
+                            </div> 
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="left" colspan="2"> 
+                            <div class="text_field_container id_container">
+                                <input type="text" class="validation" placeholder=" " pattern ="^((\s*)(\w+)(\,*))+$" required />
+                                <span></span>
+                                <label>Name of Founder(s)</label>         
+                            </div> 
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="left" colspan="2">
+                            <div class="text_field_container id_container">
+                                <input type="text" class="validation" placeholder=" " pattern ="^((\s*)(\w+)(\,*))+$" required />
+                                <span></span>
+                                <label>Internship Positions Needed: </label>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="left"> Industry: </td>
+                        <td class="right">
+                            <select>
+                                <option>-Select-</option>
+                                <option>Analytics</option>
+                                <option>Advertising</option>
+                                <option>Architecture</option>
+                                <option>Automotive</option>
+                                <option>Chemicals</option>
+                                <option>Telecommunication & Networking</option>
+                                <option>Agriculture</option>
+                                <option>Events</option>
+                                <option>Fashion</option>
+                                <option>Finannce Technology</option>
+                                <option>Desgin</option>
+                                <option>Education</option>
+                                <option>Renewable Energy</option>
+                                <option>Food Engineering</option>
+                                <option>Internet of Things</option>
+                                <option>Marketing</option>
+                                <option>Retail</option>
+                                <option>Media & Entertainment</option>
+                                <option>Sports</option>
+                                <option>Logistics</option>
+                                <option>Travel & Tourism</option>
+                            </select>         
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="left">Company logo: </td>
+                        <td class="right">
+                            <input type="file" accept="Image/*"/> <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left">Company Details: </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="left" colspan="2" id="textbox"> 
+                            <textarea rows="3" cols="50" id="text_area"></textarea>
+                        </td>
+                    </tr>
+                </table>
+                
+                <button type="submit" id="submit_btn"><a href="signup_startup_project.html" style="text-decoration: none;color:white;">Next</a></button>
+                <div id="footer">
+                    Already have an account? Go to <a href="../LoginForm.html">Login</a>.
+                </div>
+            </form>
+        </div>
+    </body>
+
+    <script>
+        function validate(){
+            var validation_fields = document.getElementsByClassName("validation");
+
+            for(var i = 0; i < validation_fields.length; i++){
+                if(!validation_fields[i].checkValidity()){
+                    alert("Invalid fields.");
+                    break;
+                }
+            }
+        }
+    </script>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html >
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+    <head>
+        <link rel="stylesheet" text="text/css" href="main.css" />
+    </head>
+    <body>
+        <div id="container" style="top:1%" class="tab">
+            <form action="#">
+                <h1>Startup Project Details</h1>
+                <hr id="header_seperator" />
+                <div class="proj1">
+                    <h2>Project 1</h2>
+                    <div class="text_field_container">
+                        <input type="text" placeholder=" " required />
+                        <span></span>
+                        <label>Project Name</label>         
+                    </div>
+    
+                    <div class="text_field_container">
+                        <input type="text" placeholder=" " required />
+                        <span></span>
+                        <label>Development Team</label>         
+                    </div>
+    
+                    <table>
+                        <tr>
+                            <td class="left">Stage: </td>
+                            <td class="right">
+                                <select>
+                                    <option>-Select-</option>
+                                    <option>Ideation</option>
+                                    <option>Validation</option>
+                                    <option>Early Traction</option>
+                                    <option>Scaling</option>
+                                </select>
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td class="left" colspan="2"> 
+                                <div class="text_field_container id_container">
+                                    <input type="url" class="validation" placeholder=" " required />
+                                    <span></span>
+                                    <label>Project link</label>         
+                                </div> 
+                            </td>
+                        </tr>
+                        
+    
+                        <tr>
+                            <td class="left" colspan="2"> 
+                                <div class="text_field_container id_container">
+                                    <input type="number" class="validation" placeholder=" " min=0 required />
+                                    <span></span>
+                                    <label>Budget</label>         
+                                </div>
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td class="left">Project image: </td>
+                            <td class="right">
+                                <input type="file" accept="Image/*"/> <br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left">Project Details: </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="left" colspan="2" id="textbox"> 
+                                <textarea rows="3" cols="50" id="text_area"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!--Project 2 form -->
+                <div class="proj2">
+                    <h2>Project 2</h2>
+                    <div class="text_field_container">
+                        <input type="text" placeholder=" " required />
+                        <span></span>
+                        <label>Project Name</label>         
+                    </div>
+    
+                    <div class="text_field_container">
+                        <input type="text" placeholder=" " required />
+                        <span></span>
+                        <label>Development Team</label>         
+                    </div>
+    
+                    <table>
+                        <tr>
+                            <td class="left">Stage: </td>
+                            <td class="right">
+                                <select>
+                                    <option>-Select-</option>
+                                    <option>Ideation</option>
+                                    <option>Validation</option>
+                                    <option>Early Traction</option>
+                                    <option>Scaling</option>
+                                </select>
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td class="left" colspan="2"> 
+                                <div class="text_field_container id_container">
+                                    <input type="url" class="validation" placeholder=" " required />
+                                    <span></span>
+                                    <label>Project link</label>         
+                                </div> 
+                            </td>
+                        </tr>
+                        
+    
+                        <tr>
+                            <td class="left" colspan="2"> 
+                                <div class="text_field_container id_container">
+                                    <input type="number" class="validation" placeholder=" " min=0 required />
+                                    <span></span>
+                                    <label>Budget</label>         
+                                </div>
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td class="left">Project image: </td>
+                            <td class="right">
+                                <input type="file" accept="Image/*"/> <br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left">Project Details: </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="left" colspan="2" id="textbox"> 
+                                <textarea rows="3" cols="50" id="text_area"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!--Project 2 ends-->
+                <input type="submit" id="submit_btn" onclick="validate()" value = "Create Account"/>
+            </form>
+        </div>
+    </body>
+
+    <script>
+        function validate(){
+            var validation_fields = document.getElementsByClassName("validation");
+
+            for(var i = 0; i < validation_fields.length; i++){
+                if(!validation_fields[i].checkValidity()){
+                    alert("Invalid fields.");
+                    break;
+                }
+            }
+        }
+    </script>
+</html>

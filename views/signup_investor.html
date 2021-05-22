@@ -1,0 +1,65 @@
+<!DOCTYPE html >
+<meta charset="utf-16" />
+<html>
+    <head>
+        <title>Investor Signup Page</title>
+        <link rel="stylesheet" text="text/css" href="main.css" />
+    </head>
+
+    <link rel="stylesheet" text="text/css" href="main.css" />
+    <body>
+        <div id="container">
+            <form action="#">
+                <h1>Investor Sign Up</h1>
+                <hr id="header_seperator" />
+                <div class="text_field_container">
+                    <input type="text" placeholder=" " required />
+                    <span></span>
+                    <label>Company Name</label>         
+                </div>
+                
+                <div class="text_field_container">
+                    <input type="text" placeholder=" " pattern="^[a-z0-9_]+@[a-z]+(\.[a-z]+)+$" class="validation" required />
+                    <span></span>
+                    <label>Company Email</label>         
+                </div>
+
+                <div class="text_field_container">
+                    <input type="text" placeholder=" " required />
+                    <span></span>
+                    <label>Company Type</label>         
+                </div>
+
+                <div class="text_field_container">
+                    <input type="password" placeholder=" " required />
+                    <span></span>
+                    <label>Password</label>         
+                </div>
+
+                <div class="text_field_container">
+                    <input type="password" placeholder=" " required />
+                    <span></span>
+                    <label>Retype Password</label>         
+                </div>
+
+                <button type="submit" onclick="validate()" id="submit_btn">Create Account</button>
+                <div id="footer">
+                    Already has an account? Go to <a href="../LoginForm.html">Login</a>.
+                </div>
+            </form>
+        </div>
+    </body>
+
+    <script>
+        function validate(){
+            var validation_fields = document.getElementsByClassName("validation");
+
+            for(var i = 0; i < validation_fields.length; i++){
+                if(!validation_fields[i].checkValidity()){
+                    alert("Invalid fields.");
+                    break;
+                }
+            }
+        }
+    </script>
+</html>

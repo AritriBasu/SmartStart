@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Landing Page</title>
+  <link rel="stylesheet" type="text/css" href="./landing.css">
+  <link rel="icon" type="image/png" href="img/logo.png" />
+</head>
+<body>
+  <nav class="nav-zone blue sticky" style="color: #ac9898;">
+      <ul class="main-nav" >
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24"><path d="M0 7v15h24v-15h-24zm22 13h-20v-6h6v-2h-6v-3h20v3h-6v2h6v6zm-13-15.5c0-.276.224-.5.5-.5h5c.276 0 .5.224.5.5v1.5h2v-2c0-1.104-.896-2-2-2h-6c-1.104 0-2 .896-2 2v2h2v-1.5zm5 6.5h-4v4h4v-4z"/></svg></li>
+          <li><a href="LoginForm.html">Login</a></li>
+          <li><a href="cards.html">Home</a></li>
+          <li class="push"><a href="#footer-contact">Contact</a></li>
+  </ul>
+  </nav>
+  <div class="container">
+    <img class="cover" src="img/cover1.jpg">
+    <!-- Slideshow container -->
+    <div class="slideshow-container">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <img src="img/startup2.jpg" style="width:100%">
+        <div class="text-1">Caption Text</div>
+        </div>
+    
+        <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+        <img src="img/startup3.jpg" style="width:100%">
+        <div class="text-1">Caption Two</div>
+        </div>
+    
+        <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <img src="img/startup4.jpg" style="width:100%">
+        <div class="text-1">Caption Three</div>
+        </div>
+    
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    </div>
+    
+  </div>
+
+  <div class="zone blue grid-wrapper">
+      <div class="card zone">
+          <img src="./img/startup1.jpg">
+          <div class="text">
+              <h1>Start up 1</h1>
+              <p>We believe in working together</p>
+              <button>Learn more</button>
+          </div>
+      </div>
+    <div class="card zone"><img src="./img/startup2.jpg">
+        <div class="text">
+            <h1>Start up 2</h1>
+            <p>We believe in working together</p>
+            <button>Learn more</button>
+        </div>
+    </div>
+    <div class="card zone"><img src="./img/startup3.jpg">
+        <div class="text">
+            <h1>Start up 3</h1>
+            <p>We believe in working together</p>
+            <button>Learn more</button>
+        </div>
+    </div>
+  </div>
+  <footer class="zone">
+    <div class="footer-container flex">
+        <div class="footer-left" id="footer-contact">
+            <h1>Smart Start</h1>
+            <h3>Email</h3>
+            <p>smartstart@gmail.com</p>
+            <h3>Contact Number</h3>
+            <p>9856542112</p>
+        </div>
+        <div>
+            <form>
+    
+              <label for="fname">Full Name</label>
+              <input required type="text" id="fname" name="firstname" placeholder="Your name..">
+          
+              <label for="lname">E-mail</label>
+              <input required type="email" id="lname" name="lastname" placeholder="Your e-mail address..">
+          
+              <label for="subject">Message</label>
+              <textarea required id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+          
+              <input type="submit" value="Submit">
+          
+            </form>
+        </div>
+      </div>
+    </footer>
+  <script src="index.js"></script>
+</div>
+</body>
+</html>

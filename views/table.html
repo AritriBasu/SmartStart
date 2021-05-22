@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>table</title>
+    <style>
+        * {
+            font-family: sans-serif;
+            /* Change your font family */
+        }
+        h1{
+            text-align: center;
+            color: white;
+        }
+        body{
+            background-image:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(job.jpg);
+        }
+        .content-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 500px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .content-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .content-table th,
+        .content-table td {
+            padding: 12px 15px;
+        }
+
+        .content-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .content-table tbody tr {
+            background-color: #f3f3f3;
+        }
+
+        .content-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>APPLICATION STATUS</h1>
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Email</th>
+                <th>Position applied</th>
+                <th>Date of Application</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Flipr</td>
+                <td>Flipr@gmail.com</td>
+                <td>Designer</td>
+                <td>12-02-2021</td>
+                <td>Accepted</td>
+            </tr>
+            <tr>
+                <td>Brokers on the Bay</td>
+                <td>brokerb@gmail.com</td>
+                <td>Backend Developer</td>
+                <td>13-02-2021</td>
+                <td>Pending</td>
+            </tr>
+            <tr>
+                <td>Esurfer</td>
+                <td>esurf@gmail.com</td>
+                <td>Designer</td>
+                <td>12-02-2021</td>
+                <td>Rejected</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
