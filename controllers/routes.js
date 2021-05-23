@@ -2,10 +2,16 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', function(req, res){
+    console.log(req.session.email);
+    console.log(req.session.type);
     res.render('index');
 });
 
 router.get("/login", function(req,res) {
+    if(req.session.userID !== undefined){
+        res.redirect('/home');
+    }
+
     res.render("login");
 });
 

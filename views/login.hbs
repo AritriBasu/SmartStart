@@ -11,18 +11,18 @@
     <div class="container">
     <div class="center">
         <h1>Login</h1>
-        <form method="post">
+        <form action="/loginForm/login" method="post">
             <div class="txt_field">
-                <input type="text" placeholder=" " id="Email" pattern="^[a-z0-9\._]+@[a-z]+(\.[a-z]+)+$" required>
+                <input type="text" placeholder=" " id="Email" pattern="^[a-z0-9\._]+@[a-z]+(\.[a-z]+)+$" name="email" required>
                 <span></span>
                 <label>Email</label>
             </div>
             <div class="txt_field">
-                <input type="password" placeholder=" " required>
+                <input type="password" placeholder=" " name="password" required>
                 <span></span>
                 <label>Password</label>
             </div>
-            <button type="button" onclick="check()"><a href="/home">Login</a></button>
+            <input type="submit" onclick="check()" value="Login"><br>
             <div class="signup_link">
             Not a member? signup as:<a href="signup/signup_investor"> Investor</a> or <a href="/signup/signup_startup"> Startup</a> or <a href="/signup/signup_intern"> Intern</a>
             </div>
@@ -34,12 +34,6 @@
             var emailPatt = new RegExp(/^[a-z0-9\._]+@[a-z]+(\.[a-z]+)+$/gm);
             var ip_email = document.getElementById("Email").value;
             var res2 = emailPatt.test(ip_email);
-            if (res2 == false) {
-                alert("Enter valid Email");
-            }
-            else{
-            alert("Login Successful");
-            }
         }
     </script>
 </body>

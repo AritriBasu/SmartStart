@@ -3,6 +3,7 @@ const db = require('../helpers/dbServices');
 const router = express.Router();
 
 
+
 router.post('/investorSignUp', function(req, res) {
     let companyName = req.body.cname;
     let companyEmail = req.body.cemail;

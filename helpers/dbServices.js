@@ -30,7 +30,23 @@ function insertNewInvestor(companyName, companyEmail, companyType, companyPass, 
     });
 }
 
+function authenticateUser(email, password, next) {
+    let query = 
+    "SELECT * FROM ((SELECT internEmail as email, internPassword as password, 'intern' AS ID FROM Intern UNION SELECT companyEmail as email, companyPassword as password,'investor' AS ID FROM Investor UNION SELECT startupEmail as email, startupPassword as password, 'startup' AS ID FROM Startup) as login) WHERE email = ? and password = ?;";
+    
+    con.query(query, [email, password],function(err, result){
+        if(err){
+            console.log(err);
+        }else{
+            if(result.length === 1){
+                next(result[0]["email"], result[0]["ID"]);
+            }
+        }
+    });
+}
+
 module.exports = {
     validateEmail: validateEmail,
-    insertNewInvestor: insertNewInvestor
+    insertNewInvestor: insertNewInvestor,
+    authenticateUser: authenticateUser
 };
