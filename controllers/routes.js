@@ -13,15 +13,15 @@ router.get("/home", function(req,res){
     res.render("cards");
 });
 
-router.get("signup/signup-investor", function(req,res){
+router.get("/signup/signup_investor", function(req,res){
     res.render("signup_investor");
 });
 
-router.get("signup/signup-startup", function(req,res){
+router.get("/signup/signup_startup", function(req,res){
     res.render("signup_startup");
 });
 
-router.get("signup/signup-intern", function(req,res){
+router.get("/signup/signup_intern", function(req,res){
     res.render("signup_intern");
 });
 

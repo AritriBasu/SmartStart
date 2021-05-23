@@ -1,26 +1,36 @@
 const con = require('../config/db');
 
 
-function validateEmail(email){
-    let query = 
-    "SELECT COUNT(allEmails) FROM ((SELECT startupEmail as allEmails FROM Startup UNION SELECT companyEmail as allEmails FROM Investor UNION  SELECT internEmail as allEmails FROM Intern) as emails) WHERE allEmails  = ?;"
-    
-    con.query(query, [email], (error, results) =>{
+function validateEmail(email, next){
+    let query = "SELECT COUNT(allEmails) FROM ((SELECT startupEmail as allEmails FROM Startup UNION SELECT companyEmail as allEmails FROM Investor UNION  SELECT internEmail as allEmails FROM Intern) as emails) WHERE allEmails  = ?;";
+    con.query(query,[email], function(error, result){
+        if (error) {
+            console.log(error);
+        }
+        else{
+            if(result.length > 0){
+                if(result[0]["COUNT(allEmails)"] === 0){
+                    next();
+                }          
+            }
+        }
+    })
+}
+
+
+function insertNewInvestor(companyName, companyEmail, companyType, companyPass, next){
+    let query = "INSERT INTO Investor VALUES (?, ?, ?, ?);";
+
+    con.query(query, [companyEmail, companyType, companyName, companyPass], function(error) {
         if(error){
             console.log(error);
-            return false;
-        }
-
-        if(results.length > 0){
-            console.log(results);
-            return true;
+        }else{
+            next();
         }
     });
-
-
-    return false;
 }
 
 module.exports = {
-    validateEmail: validateEmail
+    validateEmail: validateEmail,
+    insertNewInvestor: insertNewInvestor
 };

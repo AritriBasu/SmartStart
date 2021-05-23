@@ -4,12 +4,16 @@ const router = express.Router();
 
 
 router.post('/investorSignUp', function(req, res) {
-    let companyName = req.query.cname;
-    let companyEmail = req.query.cemail;
-    let companyType = req.query.ctype;
-    let companyPass = req.query.cpass;
+    let companyName = req.body.cname;
+    let companyEmail = req.body.cemail;
+    let companyType = req.body.ctype;
+    let companyPass = req.body.cpass;
 
-    console.log(db.validateEmail(companyEmail));
+    db.validateEmail(companyEmail, () => {
+        db.insertNewInvestor(companyName, companyEmail, companyType, companyPass, () => {
+            res.redirect('/');
+        });
+    });
 });
 
 
