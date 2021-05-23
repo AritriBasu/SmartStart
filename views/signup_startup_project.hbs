@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html>
     <head>
-        <link rel="stylesheet" text="text/css" href="main.css" />
+        <link rel="stylesheet" text="text/css" href="/css/main.css" />
     </head>
     <body>
         <div id="container" style="top:1%" class="tab">
@@ -155,7 +155,6 @@
     <script>
         function validate(){
             var validation_fields = document.getElementsByClassName("validation");
-
             for(var i = 0; i < validation_fields.length; i++){
                 if(!validation_fields[i].checkValidity()){
                     alert("Invalid fields.");

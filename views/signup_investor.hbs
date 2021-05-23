@@ -9,29 +9,29 @@
     <link rel="stylesheet" text="text/css" href="main.css" />
     <body>
         <div id="container">
-            <form action="#">
+            <form action="investorSignUp" method="POST">
                 <h1>Investor Sign Up</h1>
                 <hr id="header_seperator" />
                 <div class="text_field_container">
-                    <input type="text" placeholder=" " required />
+                    <input type="text" name="cname" placeholder=" " required />
                     <span></span>
                     <label>Company Name</label>         
                 </div>
                 
                 <div class="text_field_container">
-                    <input type="text" placeholder=" " pattern="^[a-z0-9_]+@[a-z]+(\.[a-z]+)+$" class="validation" required />
+                    <input type="text" name="cemail" placeholder=" " pattern="^[a-z0-9_]+@[a-z]+(\.[a-z]+)+$" class="validation" required />
                     <span></span>
                     <label>Company Email</label>         
                 </div>
 
                 <div class="text_field_container">
-                    <input type="text" placeholder=" " required />
+                    <input type="text" name="ctype" placeholder=" " required />
                     <span></span>
                     <label>Company Type</label>         
                 </div>
 
                 <div class="text_field_container">
-                    <input type="password" placeholder=" " required />
+                    <input type="password" name="cpass" placeholder=" " required />
                     <span></span>
                     <label>Password</label>         
                 </div>

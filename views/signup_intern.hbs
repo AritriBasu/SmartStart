@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>Intern Signup Page</title>
-        <link rel="stylesheet" text="text/css" href="main.css" />
+        <link rel="stylesheet" text="text/css" href="/css/main.css" />
     </head>
     <body>
         <div id="container" style="top:10%">
@@ -244,7 +244,7 @@
             
                 <button type="submit" onclick="validate()" id="submit_btn">Create Account</button>
                 <div id="footer">
-                    Already has an account? Go to <a href="../LoginForm.html">Login</a>.
+                    Already has an account? Go to <a href="/logic">Login</a>.
                 </div>
             </form>
         </div>
@@ -253,7 +253,6 @@
     <script>
         function validate(){
             var validation_fields = document.getElementsByClassName("validation");
-
             for(var i = 0; i < validation_fields.length; i++){
                 if(!validation_fields[i].checkValidity()){
                     alert("Invalid fields.");
