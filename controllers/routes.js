@@ -8,14 +8,14 @@ router.get('/', function(req, res){
 });
 
 router.get("/login", function(req,res) {
-    if(req.session.userID !== undefined){
+    if(req.session.email !== undefined){
         res.redirect('/home');
+    }else{
+        res.render("login");
     }
-
-    res.render("login");
 });
 
-router.get("/home", function(req,res){
+router.get("/home", function(req, res){
     res.render("cards");
 });
 
