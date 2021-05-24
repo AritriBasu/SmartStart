@@ -9,14 +9,23 @@ router.get('/', function(req, res){
 
 router.get("/login", function(req,res) {
     if(req.session.email !== undefined){
-        res.redirect('/home');
-    }else{
-        res.render("login");
+        res.redirect("/home")
+    }
+    else{
+        res.render('login');
     }
 });
 
 router.get("/home", function(req, res){
-    res.render("cards");
+    if(req.session.email !== undefined){
+        try {
+            res.render('cards', {
+              name: req.session.email
+            })
+          } catch (err) {
+            console.error(err);
+          }
+    }
 });
 
 router.get("/signup/signup_investor", function(req,res){
@@ -24,12 +33,15 @@ router.get("/signup/signup_investor", function(req,res){
 });
 
 router.get("/signup/signup_startup", function(req,res){
-    res.render("signup_startup");
+    res.render("signup_startup")
 });
 
 router.get("/signup/signup_intern", function(req,res){
     res.render("signup_intern");
 });
 
+router.get("/account/account_investor", function(req,res){
+    res.render("Account");
+});
 
 module.exports = router;
