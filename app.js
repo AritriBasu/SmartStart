@@ -8,7 +8,7 @@ const session = require('express-session');
 const routes = require('./controllers/routes');
 const signup = require('./controllers/signup');
 const login = require('./controllers/login');
-
+//const accounts = require('./controllers/accounts');
 
 const app = express();
 
@@ -42,6 +42,7 @@ app.engine(
 app.use('/', routes);
 app.use('/signup', signup);
 app.use('/loginForm/', login);
+//app.use('/account',accounts);
 
 app.listen(3000, function () {
     console.log("Server is running on port 3000.");

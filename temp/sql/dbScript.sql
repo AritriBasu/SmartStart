@@ -321,7 +321,7 @@ ALTER TABLE AppliesTo
 ADD CONSTRAINT fk_startupemail_apppliesto_startup
 FOREIGN KEY (startupEmail) REFERENCES Startup(startupEmail);
 
-INSERT INTO AppliesTo VALUES('intern@gmail.com','startup@gmail.com','2020-05-12');
+INSERT INTO AppliesTo VALUES('intern@gmail.com','startup@gmail.com','2020-05-12','A');
 
 SELECT * FROM AppliesTo;
 /*
