@@ -30,6 +30,86 @@ function insertNewInvestor(companyName, companyEmail, companyType, companyPass, 
     });
 }
 
+
+function insertNewIntern(internEmail, internPassword, internName, internDOB, qualification, graduationYear, 
+                        college, collegeDegree, department, next){
+    let query = 
+    "INSERT INTO Intern VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
+    con.query(query, [internEmail, internPassword, internName, internDOB, 
+                      qualification, graduationYear, college, collegeDegree, department], 
+        function(error) {
+            if(error){
+                console.log(error);
+            }else {
+                next();
+            }
+        }
+    );
+}
+
+function insertNewStartup(startupEmail, startupName, startupCIN, startupPassword, startupStage,
+                          startupNature, startupWebsiteLink, startupIndustry, startupLogo,
+                          startupDetails, next){
+    let query = 
+    "INSERT INTO Startup VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
+
+    con.query(query, [startupEmail, startupName, startupCIN, startupPassword, startupStage,
+                      startupNature, startupWebsiteLink, startupIndustry, startupLogo, 
+                      startupDetails], 
+        
+        function(error){
+            if(error){
+                console.log(error);
+            }else {
+                next();
+            }
+        }
+
+
+    );
+}
+
+function insertFounders(startupEmail, founders, next){
+    let query = "INSERT INTO StartupFounders VALUES ";
+    
+
+    for(let i = 0; i < founders.length - 1; i++){
+        query += `("${founders[i]}", "${startupEmail}"), `;
+    }
+
+    query += `("${founders[founders.length - 1]}", "${startupEmail}");`;
+
+    con.query(query, function(error) {
+        if(error){
+            console.log(error);
+        }else {
+            next();
+        }
+    });
+}
+
+function insertInternPos(startupEmail, internPosNeeded, next){
+    let query = "INSERT INTO InternPosNeeded VALUES ";
+    
+    for(let i = 0; i < internPosNeeded.length - 1; i++){
+        query += `("${startupEmail}", "${internPosNeeded[i]}"), `;
+    }
+
+    query += `("${startupEmail}", "${internPosNeeded[internPosNeeded.length - 1]}");`;
+
+
+    con.query(query, function(error) {
+        if(error){
+            console.log(error);
+        }else {
+            next();
+        }
+    });
+
+}
+
 function authenticateUser(email, password, next) {
     let query = 
     "SELECT * FROM ((SELECT internEmail as email, internPassword as password, 'intern' AS ID FROM Intern UNION SELECT companyEmail as email, companyPassword as password,'investor' AS ID FROM Investor UNION SELECT startupEmail as email, startupPassword as password, 'startup' AS ID FROM Startup) as login) WHERE email = ? and password = ?;";
@@ -48,5 +128,9 @@ function authenticateUser(email, password, next) {
 module.exports = {
     validateEmail: validateEmail,
     insertNewInvestor: insertNewInvestor,
-    authenticateUser: authenticateUser
+    authenticateUser: authenticateUser,
+    insertNewIntern: insertNewIntern,
+    insertNewStartup: insertNewStartup,
+    insertFounders: insertFounders,
+    insertInternPos: insertInternPos
 };

@@ -7,31 +7,31 @@
     </head>
     <body>
         <div id="container" style="top:10%">
-            <form method="post">
+            <form method="post" action="/signup/internSignUp">
                 <h1>Intern Sign Up</h1>
                 <hr id="header_seperator" />
                 <div id="header"> Personal Details</div>
                 
                 <div class="text_field_container">
-                    <input type="text" placeholder=" " required />
+                    <input type="text" name="internName" placeholder=" " required />
                     <span></span>
                     <label>Name</label>         
                 </div>
 
                 <div class="text_field_container">
-                    <input type="text" placeholder=" " pattern="^[a-z0-9_]+@[a-z]+(\.[a-z]+)+$" class="validation" required />
+                    <input type="text" name="internEmail" placeholder=" " pattern="^[a-z0-9_]+@[a-z]+(\.[a-z]+)+$" class="validation" required />
                     <span></span>
                     <label>Email</label>         
                 </div>
                 
                 <div class="text_field_container">
-                    <input type="password" placeholder=" " required />
+                    <input type="password" name="internPass" placeholder=" " required />
                     <span></span>
                     <label>Password</label>         
                 </div>
 
                 <div class="text_field_container">
-                    <input type="password" placeholder=" " required />
+                    <input type="password"placeholder=" " required />
                     <span></span>
                     <label>Retype Password</label>         
                 </div>
@@ -39,7 +39,7 @@
                 <table>
                     <tr>
                         <td class="left"> Date of Birth: </td>
-                        <td class="right"> <input type="date" value="age", id="date_field"> </td>
+                        <td class="right"> <input type="date" name="internDOB" value="age", id="date_field"> </td>
                     </tr>
                 </table>
                 <table id="edu_table">
@@ -47,7 +47,7 @@
                     <tr>
                         <td class="left"> Highest Qualification: </td>
                         <td class="right">
-                            <select>
+                            <select name="internQualification">
                                 <option>-Select-</option>
                                 <option>High school</option>
                                 <option>Pre University (XII)</option>
@@ -64,7 +64,7 @@
                     <tr>
                         <td class="left">Year of graduation: </td>
                         <td class="right">
-                            <select>
+                            <select name="internYearGrad">
                                 <option>Year</option>
                                 <option value="1950">1950</option>
                                 <option value="1951">1951</option>
@@ -174,7 +174,7 @@
                     <tr>
                         <td class="left" colspan="2"> 
                             <div class="text_field_container id_container">
-                                <input type="password" placeholder=" " required />
+                                <input type="text" name="internCollege" placeholder=" " required />
                                 <span></span>
                                 <label>College/School</label>         
                             </div>                        
@@ -184,7 +184,7 @@
                     <tr>
                         <td class="left"> Degree: </td>
                         <td class="right">
-                            <select>
+                            <select name = "internDegree">
                                 <option> -Select- </option>
                                 <option>Diploma or Non Degree Engineering Programs</option>
                                 <option>BE</option>
@@ -206,7 +206,7 @@
                     <tr>
                         <td class="left"> Department: </td>
                         <td class="right">
-                            <select>
+                            <select name="internDepartment">
                                 <option >-Select-</option>
                                 <option>Aeronautical Engineering</option>
                                 <option>Agriculture Engineering</option>
@@ -242,7 +242,7 @@
                     </tr>
                 </table>
             
-                <button type="submit" onclick="validate()" id="submit_btn">Create Account</button>
+                <input type="submit" onclick="validate()" id="submit_btn" value="Create Account"> <br />
                 <div id="footer">
                     Already has an account? Go to <a href="/login">Login</a>.
                 </div>

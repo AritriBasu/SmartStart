@@ -7,29 +7,29 @@
 
     <body>
         <div id="container" style="top:1%">
-            <form action="#">
+            <form action="/signup/startupSignUp" method="POST" enctype="multipart/form-data">
                 <h1>Startup Sign Up</h1>
                 <hr id="header_seperator" />
                 <div class="text_field_container">
-                    <input type="text"  placeholder=" " required />
+                    <input type="text"  name="startupName" placeholder=" " required />
                     <span></span>
                     <label>Company Name</label>         
                 </div>
 
                 <div class="text_field_container">
-                    <input type="text" placeholder=" " class="validation" pattern="^(U|L)\d{5}[A-Z]{2}\d{4}(PTC|PLC|SGC|OPC|NPL)\d{6}$" required />
+                    <input type="text" name="startupCIN" placeholder=" " class="validation" pattern="^(U|L)\d{5}[A-Z]{2}\d{4}(PTC|PLC|SGC|OPC|NPL)\d{6}$" required />
                     <span></span>
                     <label>Company Incorporation Number</label>         
                 </div>
 
                 <div class="text_field_container">
-                    <input type="text" placeholder=" " class="validation" pattern="^[a-z0-9_]+@[a-z]+(\.[a-z]+)+$" required />
+                    <input type="text" name="startupEmail" placeholder=" " class="validation" pattern="^[a-z0-9_]+@[a-z]+(\.[a-z]+)+$" required />
                     <span></span>
                     <label>Company Email</label>         
                 </div>
                 
                 <div class="text_field_container">
-                    <input type="password" placeholder=" " required />
+                    <input type="password" name="startupPass" placeholder=" " required />
                     <span></span>
                     <label>Password</label>         
                 </div>
@@ -44,7 +44,7 @@
                     <tr>
                         <td class="left"> Nature of the entity: </td>
                         <td class="right">
-                            <select>
+                            <select name="startupNature">
                                 <option>-Select-</option>
                                 <option>Private Limited Company</option>
                                 <option>Partnership firm</option>
@@ -56,7 +56,7 @@
                     <tr>
                         <td class="left">Stage: </td>
                         <td class="right">
-                            <select>
+                            <select name="startupStage">
                                 <option>-Select-</option>
                                 <option>Ideation</option>
                                 <option>Validation</option>
@@ -69,7 +69,7 @@
                     <tr>
                         <td class="left" colspan="2"> 
                             <div class="text_field_container id_container">
-                                <input type="url" class="validation" placeholder=" " required />
+                                <input type="url" class="validation" name = "startupWebLink" placeholder=" " required />
                                 <span></span>
                                 <label>Website link</label>         
                             </div> 
@@ -79,7 +79,7 @@
                     <tr>
                         <td class="left" colspan="2"> 
                             <div class="text_field_container id_container">
-                                <input type="text" class="validation" placeholder=" " pattern ="^((\s*)(\w+)(\,*))+$" required />
+                                <input type="text" class="validation" name ="startupFounder" placeholder=" " pattern ="^((\s*)(\w+)(\,*))+$" required />
                                 <span></span>
                                 <label>Name of Founder(s)</label>         
                             </div> 
@@ -89,7 +89,7 @@
                     <tr>
                         <td class="left" colspan="2">
                             <div class="text_field_container id_container">
-                                <input type="text" class="validation" placeholder=" " pattern ="^((\s*)(\w+)(\,*))+$" required />
+                                <input type="text" class="validation" name="startupInternPos" placeholder=" " pattern ="^((\s*)(\w+)(\,*))+$" required />
                                 <span></span>
                                 <label>Internship Positions Needed: </label>
                             </div>
@@ -99,7 +99,7 @@
                     <tr>
                         <td class="left"> Industry: </td>
                         <td class="right">
-                            <select>
+                            <select name="startupIndustry">
                                 <option>-Select-</option>
                                 <option>Analytics</option>
                                 <option>Advertising</option>
@@ -129,7 +129,7 @@
                     <tr>
                         <td class="left">Company logo: </td>
                         <td class="right">
-                            <input type="file" accept="Image/*"/> <br />
+                            <input type="file" name="startupLogo" accept="Image/*"/> <br />
                         </td>
                     </tr>
                     <tr>
@@ -138,12 +138,12 @@
                     </tr>
                     <tr>
                         <td class="left" colspan="2" id="textbox"> 
-                            <textarea rows="3" cols="50" id="text_area"></textarea>
+                            <textarea name="startupDetails" rows="3" cols="50" id="text_area"></textarea>
                         </td>
                     </tr>
                 </table>
                 
-                <button type="submit" id="submit_btn"><a href="signup_startup_project.html" style="text-decoration: none;color:white;">Next</a></button>
+                <input type="submit" id="submit_btn" value="Create Account" /> <br />
                 <div id="footer">
                     Already have an account? Go to <a href="/login">Login</a>.
                 </div>
