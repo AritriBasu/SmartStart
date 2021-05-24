@@ -145,7 +145,7 @@ button:hover {
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #30336b;
+    background-color: #355c5e;
 }
 
 /* footer p {
@@ -162,7 +162,7 @@ footer {
 
 
 .slideshow-container {
-    max-width: 600px;
+    max-width: 700px;
     position: absolute;
     margin: auto;
   
