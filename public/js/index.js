@@ -1,5 +1,5 @@
-var slideIndex = 1;
-showSlides(slideIndex);
+// var slideIndex = 1;
+// showSlides(slideIndex);
 
 // Next/previous controls
 function plusSlides(n) {
@@ -27,7 +27,6 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 var slideIndex = 0;
-showSlides();
 
 function showSlides() {
   var i;
@@ -40,3 +39,4 @@ function showSlides() {
   slides[slideIndex-1].style.display = "block";
   setTimeout(showSlides, 4000); // Change image every 2 seconds
 }
+showSlides();
