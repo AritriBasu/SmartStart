@@ -1,5 +1,6 @@
 const con = require('../config/db');
 
+let startup=[];
 
 function validateEmail(email, next){
     let query = "SELECT COUNT(allEmails) FROM ((SELECT startupEmail as allEmails FROM Startup UNION SELECT companyEmail as allEmails FROM Investor UNION  SELECT internEmail as allEmails FROM Intern) as emails) WHERE allEmails  = ?;";
@@ -33,7 +34,6 @@ function insertNewInvestor(companyName, companyEmail, companyType, companyPass, 
 
 function insertNewIntern(internEmail, internPassword, internName, internDOB, qualification, graduationYear, 
                         college, collegeDegree, department, next){
-    let query = 
     "INSERT INTO Intern VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
     con.query(query, [internEmail, internPassword, internName, internDOB, 
@@ -51,10 +51,13 @@ function insertNewIntern(internEmail, internPassword, internName, internDOB, qua
 function insertNewStartup(startupEmail, startupName, startupCIN, startupPassword, startupStage,
                           startupNature, startupWebsiteLink, startupIndustry, startupLogo,
                           startupDetails, next){
-    let query = 
+                            
+                            
+    startup.push({email:internEmail,name:startupName}); 
+
     "INSERT INTO Startup VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
-
+    
     con.query(query, [startupEmail, startupName, startupCIN, startupPassword, startupStage,
                       startupNature, startupWebsiteLink, startupIndustry, startupLogo, 
                       startupDetails], 
@@ -69,6 +72,19 @@ function insertNewStartup(startupEmail, startupName, startupCIN, startupPassword
 
 
     );
+}
+
+function return_startup(next){
+
+    let query = 
+    "SELECT * FROM startup";
+    con.query(query,function(err, result){
+        if(err){
+            console.log(err);
+        }else{
+            next(result);
+        }
+    });
 }
 
 function insertFounders(startupEmail, founders, next){
@@ -132,5 +148,6 @@ module.exports = {
     insertNewIntern: insertNewIntern,
     insertNewStartup: insertNewStartup,
     insertFounders: insertFounders,
-    insertInternPos: insertInternPos
+    insertInternPos: insertInternPos,
+    return_startup:return_startup
 };
