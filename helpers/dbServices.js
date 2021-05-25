@@ -1,7 +1,5 @@
 const con = require('../config/db');
 
-let startup=[];
-
 function validateEmail(email, next){
     let query = "SELECT COUNT(allEmails) FROM ((SELECT startupEmail as allEmails FROM Startup UNION SELECT companyEmail as allEmails FROM Investor UNION  SELECT internEmail as allEmails FROM Intern) as emails) WHERE allEmails  = ?;";
     con.query(query,[email], function(error, result){
@@ -34,7 +32,7 @@ function insertNewInvestor(companyName, companyEmail, companyType, companyPass, 
 
 function insertNewIntern(internEmail, internPassword, internName, internDOB, qualification, graduationYear, 
                         college, collegeDegree, department, next){
-    "INSERT INTO Intern VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    let query = "INSERT INTO Intern VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
     con.query(query, [internEmail, internPassword, internName, internDOB, 
                       qualification, graduationYear, college, collegeDegree, department], 
@@ -51,11 +49,8 @@ function insertNewIntern(internEmail, internPassword, internName, internDOB, qua
 function insertNewStartup(startupEmail, startupName, startupCIN, startupPassword, startupStage,
                           startupNature, startupWebsiteLink, startupIndustry, startupLogo,
                           startupDetails, next){
-                            
-                            
-    startup.push({email:internEmail,name:startupName}); 
 
-    "INSERT INTO Startup VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    let query = "INSERT INTO Startup VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
     
     con.query(query, [startupEmail, startupName, startupCIN, startupPassword, startupStage,

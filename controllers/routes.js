@@ -24,7 +24,7 @@ router.get("/home", function(req, res){
     if(req.session.email !== undefined){
         try {
             db.return_startup((result)=>{
-            console.log(result);
+            console.log(result[0].startupName);
             res.render('cards', {
               email: req.session.email,
               startups:result
