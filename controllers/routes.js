@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const db = require('../helpers/dbServices');
+
 let type="";
 router.get('/', function(req, res){
     console.log(req.session.email);
@@ -17,12 +19,18 @@ router.get("/login", function(req,res) {
     }
 });
 
+
 router.get("/home", function(req, res){
     if(req.session.email !== undefined){
         try {
+            db.return_startup((result)=>{
+            console.log(result[0].startupName);
             res.render('cards', {
-              name: req.session.email
+              email: req.session.email,
+              startups:result
             })
+            //console.log("hello");
+          });//db
           } catch (err) {
             console.error(err);
           }

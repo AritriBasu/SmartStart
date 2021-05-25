@@ -1,104 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Startup Cards</title>
     <link rel="stylesheet" href="/css/style.css" />
-
 </head>
 
-<body>
+<body id="card-page-body">
    {{> _header}}
-    <div class="container">
-         {{name}}
-        <div class="grid">
+    <div class="container-cards">
+       <div class="grid">
+             {{#each startups}}
             <div class="grid-item">
                 <div class="card">
-                    <img class="card-img" src="/images/broker.png" alt="Broker" />
+                    <img class="card-img" src="/images/broker.png" alt="{{this.startupName}}" />
                     <div class="card-content">
-                        <h1 class="card-header">Brokers on the Bay</h1>
-                        <p class="card-text">
-                            We are a London based startup and are known
-                            for our team based approach on broking. It will be our
-                            pleasure to help you.
+                       
+                        <h1 class="card-header">{{this.startupName}}</h1>
+                        <p>
+                           <p class="card-text">{{this.startupDetails}}</p>
+                           <p class="card-text"><span class="text-head">EMAIL:</span>{{this.startupEmail}}</p>
+                           <p class="card-text"><span class="text-head">STARTUP STAGE:</span>{{this.startupStage}}</p>
+                           <p class="card-text"><span class="text-head">INDUSTRY:</span>{{this.startupNature}}</p>
                         </p>
-                        <button class="card-btn">Visit <span>&rarr;</span></button>
+                        <a href="{{this.startupWebsiteLink}}"><button class="card-btn">Visit <span>&rarr;</span></button></a>
+                        <button class="card-btn">Apply as intern</button>
+                        <button class="card-btn">Apply as investor</button>
                     </div>
                 </div>
             </div>
-            <div class="grid-item">
-                <div class="card">
-                    <img class="card-img" src="/images/flipr.jpg" alt="flipr img" />
-                    <div class="card-content">
-                        <h1 class="card-header">flipr</h1>
-                        <p class="card-text">
-                            We are a smart water management company and have a
-                            unique approach towards managing water resources.
-                        </p>
-                        <button class="card-btn">Visit <span>&rarr;</span></button>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="card">
-                    <img class="card-img" src="/images/openly.jpg" alt="Openly" />
-                    <div class="card-content">
-                        <h1 class="card-header">Openly</h1>
-                        <p class="card-text">
-                            Openly is a blog publishing website wherein a person can
-                            write his/her political beliefs anonymously giving an actual
-                            feel of freedom of speech.
-                        </p>
-                        <button class="card-btn">Visit <span>&rarr;</span></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="grid">
-            <div class="grid-item">
-                <div class="card">
-                    <img class="card-img" src="/images/broker.png" alt="Broker" />
-                    <div class="card-content">
-                        <h1 class="card-header">Brokers on the Bay</h1>
-                        <p class="card-text">
-                            We are a London based startup and are known
-                            for our team based approach on broking. It will be our
-                            pleasure to help you.
-                        </p>
-                        <button class="card-btn">Visit <span>&rarr;</span></button>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="card">
-                    <img class="card-img" src="/images/flipr.jpg" alt="flipr img" />
-                    <div class="card-content">
-                        <h1 class="card-header">flipr</h1>
-                        <p class="card-text">
-                            We are a smart water management company and have a
-                            unique approach towards managing water resources.
-                        </p>
-                        <button class="card-btn">Visit <span>&rarr;</span></button>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="card">
-                    <img class="card-img" src="/images/openly.jpg" alt="Openly" />
-                    <div class="card-content">
-                        <h1 class="card-header">Openly</h1>
-                        <p class="card-text">
-                            Openly is a blog publishing website wherein a person can
-                            write his/her political beliefs anonymously giving an actual
-                            feel of freedom of speech.
-                        </p>
-                        <button class="card-btn">Visit <span>&rarr;</span></button>
-                    </div>
-                </div>
-            </div>
-        </div>
+             {{/each}}
+         </div>
     </div>
 </body>
 
