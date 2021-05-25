@@ -47,14 +47,21 @@ router.get("/account", function(req,res){
             console.log(req.session.email);
             res.render('account_investor', {
               email: req.session.email
-            })
+            }); 
           } catch (err) {
             console.error(err);
           }
     }
     else if(type==="intern")
     {
-        res.send("intern route");
+        try {
+            console.log(req.session.email);
+            res.render('account_intern', {
+              email: req.session.email
+            }); 
+          } catch (err) {
+            console.error(err);
+          }
     }
     else{
         res.send("startup route")

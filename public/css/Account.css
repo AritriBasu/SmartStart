@@ -53,7 +53,7 @@ body{
 /**table styles***/
 h1{
    text-align: center;
-   color: white;
+   color: rgba(0, 0, 0, 0.3);
 }
 .content-table {
    border-collapse: collapse;
