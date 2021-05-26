@@ -35,7 +35,17 @@ router.get("/home", function(req, res){
         } catch (err) {
             console.error(err);
         }
-    }//if signed in
+    }else{
+        try {
+            db.returnStartup(undefined, undefined, (result) => {
+                res.render('cards', {
+                    startups: result,
+                });
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    }
 });
 
 router.get("/signup/signup_investor", function(req,res){
@@ -84,7 +94,9 @@ router.get("/account", function(req,res){
           compEmail: req.session.email,
           compType:result[0][0].companyType,
           compName:result[0][0].companyName,
-          tableRow:result[1]
+          tableRow:result[1],
+          headerData: frontendData.getHeaderLoginData(req.session),
+          buttonData: frontendData.getCardsUserType(req.session) 
         })
       });//db
       } catch (err) {
@@ -106,14 +118,16 @@ router.get("/account", function(req,res){
           collegeDegree:result[0][0].collegeDegree,
           internDOB:result[0][0].internDOB,
           graduationYear:result[0][0].graduationYear,
-          tableApplies:result[1]
+          tableApplies:result[1],
+          headerData: frontendData.getHeaderLoginData(req.session),
+          buttonData: frontendData.getCardsUserType(req.session) 
         })
       });//db
       } catch (err) {
         console.error(err);
       }
     }
-    else{
+    else if (type==="startup"){
       
       try {
         db.returnStartupDetails(req.session.email,(result)=>{
@@ -128,7 +142,9 @@ router.get("/account", function(req,res){
           startWebsiteLink:result[0][0].startupWebsiteLink, 
           startDetails:result[0][0].startupDetails,
           tableIntern:result[1],
-          tableInvestor:result[2]
+          tableInvestor:result[2],
+          headerData: frontendData.getHeaderLoginData(req.session),
+          buttonData: frontendData.getCardsUserType(req.session) 
         })
       });//db
       } catch (err) {
