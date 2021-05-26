@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const db = require('../helpers/dbServices');
 
-let type="";
 router.get('/', function(req, res){
     console.log(req.session.email);
     console.log(req.session.type);
@@ -32,7 +31,7 @@ router.get("/home", function(req, res){
         } catch (err) {
             console.error(err);
         }
-    }
+    }//if signed in
 });
 
 router.get("/signup/signup_investor", function(req,res){
@@ -52,15 +51,19 @@ router.get("/logout", function(req, res){
 });
 
 router.get("/account", function(req,res){
+    let type=req.session.type;
     if(type==="investor"){
-        try {
-            console.log(req.session.email);
-            res.render('account_investor', {
-              email: req.session.email
-            }); 
-          } catch (err) {
-            console.error(err);
-          }
+      try {
+        db.returnInvestor(req.session.email,(result)=>{
+        res.render('account_investor', {
+          compEmail: req.session.email,
+          compType:result[0].companyType,
+          compName:result[0].companyName
+        })
+      });//db
+      } catch (err) {
+        console.error(err);
+      }
     }
     else if(type==="intern")
     {
