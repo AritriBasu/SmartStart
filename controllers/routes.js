@@ -79,6 +79,8 @@ router.get("/account", function(req,res){
       try {
         db.returnInvestor(req.session.email,(result)=>{
         res.render('account_investor', {
+          headerData: frontendData.getHeaderLoginData(req.session),
+          buttonData: frontendData.getCardsUserType(req.session),
           compEmail: req.session.email,
           compType:result[0][0].companyType,
           compName:result[0][0].companyName,
@@ -94,6 +96,8 @@ router.get("/account", function(req,res){
       try {
         db.returnInternDetails(req.session.email,(result)=>{
         res.render('account_intern', {
+          headerData: frontendData.getHeaderLoginData(req.session),
+          buttonData: frontendData.getCardsUserType(req.session),
           internEmail: result[0][0].internEmail,
           internName:result[0][0].internName,
           college:result[0][0].college, 
@@ -114,6 +118,8 @@ router.get("/account", function(req,res){
       try {
         db.returnStartupDetails(req.session.email,(result)=>{
         res.render('account_startup', {
+          headerData: frontendData.getHeaderLoginData(req.session),
+          buttonData: frontendData.getCardsUserType(req.session),
           startupEmail: result[0][0].startupEmail,
           startName:result[0][0].startupName,
           startCIN:result[0][0].startupCIN, 
