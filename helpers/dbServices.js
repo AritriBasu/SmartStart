@@ -72,7 +72,7 @@ function insertNewStartup(startupEmail, startupName, startupCIN, startupPassword
 function return_startup(next){
 
     let query = 
-    "SELECT * FROM startup";
+    "SELECT * FROM Startup";
     con.query(query,function(err, result){
         if(err){
             console.log(err);

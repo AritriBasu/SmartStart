@@ -72,7 +72,14 @@ router.get("/account", function(req,res){
           }
     }
     else{
-        res.send("startup route")
+         try {
+        console.log(req.session.email);
+        res.render('account_startup', {
+          email: req.session.email
+        }); 
+      } catch (err) {
+        console.error(err);
+      }
     }
 });
 
