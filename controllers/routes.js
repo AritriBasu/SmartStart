@@ -34,6 +34,7 @@ router.get("/home", function(req, res){
             });
         } catch (err) {
             console.error(err);
+            res.render('cards',{errmsg:"Error in fetching startups!"});
         }
     }else{
         try {
@@ -44,20 +45,37 @@ router.get("/home", function(req, res){
             });
         } catch (err) {
             console.error(err);
+            res.render('cards',{errmsg:"Error in fetching startups!"});
         }
     }
 });
 
 router.get("/signup/signup_investor", function(req,res){
+  try{
     res.render("signup_investor");
+  }
+  catch(err){
+    console.log(err);
+    res.redirect('/',{errmsg:"Signup error!"});
+  }
 });
 
 router.get("/signup/signup_startup", function(req,res){
-    res.render("signup_startup")
+  try{
+    res.render("signup_startup");
+  }
+  catch(err){
+  res.redirect('/',{errmsg:"Signup error!"});
+  }
 });
 
 router.get("/signup/signup_intern", function(req,res){
+  try{
     res.render("signup_intern");
+  }
+  catch(err){
+  res.redirect('/',{errmsg:"Signup error!"});
+  }
 });
 
 router.get("/logout", function(req, res){
@@ -68,19 +86,30 @@ router.get("/logout", function(req, res){
 router.post("/applyAsIntern", function(req, res){
     let startupEmail = req.body.startupEmail;
     let date = new Date();
+    try{
     date.toISOString().split('T')[0];
     db.insertInternApplication(req.session.email, startupEmail, date, () => {
         res.redirect("/home");
     });
+  }
+  catch(err)
+  {
+    res.redirect('/',{errmsg:"Signup error!"});
+  }
 });
 
 router.post("/applyAsInvestor", function(req, res){
+  try{
     let startupEmail = req.body.startupEmail;
     let date = new Date();
     date.toISOString().split('T')[0];
     db.insertInvestApplication(req.session.email, date, startupEmail, () => {
         res.redirect("/home");
     });
+  }
+  catch(err){
+    res.redirect('/',{errmsg:"Application error!"});
+  }
 });
 
 router.post("/actionIntern", function(req, res){
@@ -109,6 +138,7 @@ router.get("/account", function(req,res){
       });//db
       } catch (err) {
         console.error(err);
+        res.redirect('/',{errmsg:"Failed to fetch account!"});
       }
     }
     else if(type==="intern")
@@ -144,6 +174,7 @@ router.get("/account", function(req,res){
       });//db
       } catch (err) {
         console.error(err);
+        res.redirect('/',{errmsg:"Failed to fetch account!"});
       }
     }
     else if (type==="startup"){
@@ -167,6 +198,7 @@ router.get("/account", function(req,res){
       });//db
       } catch (err) {
         console.error(err);
+        res.redirect('/',{errmsg:"Failed to fetch account!"});
       }
     }
     });
