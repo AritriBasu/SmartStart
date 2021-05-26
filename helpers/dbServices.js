@@ -82,6 +82,20 @@ function return_startup(next){
     });
 }
 
+function return_investor(next){
+
+    let query = 
+    "SELECT * FROM Investor";
+    con.query(query,function(err, result){
+        if(err){
+            console.log(err);
+        }else{
+            next(result);
+        }
+    });
+}
+
+
 function insertFounders(startupEmail, founders, next){
     let query = "INSERT INTO StartupFounders VALUES ";
     

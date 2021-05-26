@@ -44,7 +44,6 @@ router.get("/home", function(req, res){
           email: req.session.email,
           startups:result
         })
-        //console.log("hello");
       });//db
       } catch (err) {
         console.error(err);
@@ -58,7 +57,6 @@ router.get("/home", function(req, res){
           email: req.session.email,
           startups:result
         })
-        //console.log("hello");
       });//db
       } catch (err) {
         console.error(err);
@@ -81,14 +79,16 @@ router.get("/signup/signup_intern", function(req,res){
 
 router.get("/account", function(req,res){
     if(type==="investor"){
-        try {
-            console.log(req.session.email);
-            res.render('account_investor', {
-              email: req.session.email
-            }); 
-          } catch (err) {
-            console.error(err);
-          }
+      try {
+        db.return_investor((result)=>{
+        console.log(result);
+        res.render('account_investor', {
+          email: req.session.email
+        })
+      });//db
+      } catch (err) {
+        console.error(err);
+      }
     }
     else if(type==="intern")
     {
