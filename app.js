@@ -8,13 +8,13 @@ const session = require('express-session');
 const routes = require('./controllers/routes');
 const signup = require('./controllers/signup');
 const login = require('./controllers/login');
-//const accounts = require('./controllers/accounts');
 
 const app = express();
 
 app.set('view engine', '.hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+
 
 app.use(session(
     {
