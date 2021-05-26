@@ -22,49 +22,17 @@ router.get("/login", function(req,res) {
 
 router.get("/home", function(req, res){
     if(req.session.email !== undefined){
-      if(type==="investor"){
         try {
-          db.return_startup((result)=>{
-          console.log(result[0].startupLogo);
-          res.render('cards_investor', {
-            email: req.session.email,
-            startups:result
-          })
-          //console.log("hello");
-        });//db
+            db.returnStartup((result)=>{
+                console.log(result[0].startupName);
+                res.render('cards', {
+                    startups: result
+                });
+            });
         } catch (err) {
-          console.error(err);
+            console.error(err);
         }
-     }
-     else if (type==="intern"){
-      try {
-        db.return_startup((result)=>{
-        console.log(result[0].startupLogo);
-        res.render('cards_intern', {
-          email: req.session.email,
-          startups:result
-        })
-        //console.log("hello");
-      });//db
-      } catch (err) {
-        console.error(err);
-      }
-     }//else if
-     else{
-      try {
-        db.return_startup((result)=>{
-        console.log(result[0].startupLogo);
-        res.render('cards_startup', {
-          email: req.session.email,
-          startups:result
-        })
-        //console.log("hello");
-      });//db
-      } catch (err) {
-        console.error(err);
-      }
-     }    
-    }//if signed in
+    }
 });
 
 router.get("/signup/signup_investor", function(req,res){
@@ -77,6 +45,10 @@ router.get("/signup/signup_startup", function(req,res){
 
 router.get("/signup/signup_intern", function(req,res){
     res.render("signup_intern");
+});
+
+router.get("/logout", function(req, res){
+
 });
 
 router.get("/account", function(req,res){
