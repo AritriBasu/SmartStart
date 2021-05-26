@@ -206,8 +206,6 @@ CREATE TABLE InvestsIn(
 	DOI date NOT NULL
 );
 
-ALTER TABLE InvestsIn DROP PRIMARY KEY;
-
 ALTER TABLE InvestsIn
 ADD CONSTRAINT pk_investsin PRIMARY KEY (companyEmail, startupEmail);
 
@@ -219,7 +217,7 @@ ALTER TABLE InvestsIn
 ADD CONSTRAINT fk_startupemail_investsin_startup
 FOREIGN KEY (startupEmail) REFERENCES Startup(startupEmail);
  
-INSERT INTO InvestsIn VALUES('investor@gmail.com', '2020-05-12', 'startup@gmail.com');
+INSERT INTO InvestsIn VALUES('investor@gmail.com',  'startup@gmail.com','2020-05-12');
 SELECT * FROM InvestsIn;
 /*
  * 

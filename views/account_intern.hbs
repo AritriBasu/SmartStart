@@ -114,21 +114,13 @@
             </tr>
         </thead>
         <tbody>
+            {{#each tableApplies}}
             <tr>
-                <td>Flipr</td>
-                <td>Flipr@gmail.com</td>
-                <td>12-02-2021</td>
+                <td>{{this.startupName}}</td>
+                <td>{{this.startupName}}</td>
+                <td>{{this.DOA}}</td>
             </tr>
-            <tr>
-                <td>Brokers on the Bay</td>
-                <td>brokerb@gmail.com</td>
-                <td>13-02-2021</td>
-            </tr>
-            <tr>
-                <td>Esurfer</td>
-                <td>esurf@gmail.com</td>
-                <td>12-02-2021</td>
-            </tr>
+            {{/each}}
         </tbody>
     </table><br><br>
        </div>

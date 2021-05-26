@@ -54,19 +54,6 @@
                         
                      </div>
                  </div>
-                 {{!-- <div class="card mb-3 content">
-                      <h1 class="m-3">Recent Projects</h1> 
-					  <div class="card-body">
-                         <div class="row">
-                            <div class="col-md-3">
-                                 <h5>Project Name</h5>
-                            </div>
-                            <div class="col-md-9 text-secondary">
-                                Project Description
-                            </div>
-                          </div>
-                      </div>
-                   </div> --}}
                </div>
            </div>
            <br><br>
@@ -81,24 +68,14 @@
             </tr>
         </thead>
         <tbody>
+            {{#each tableRow}}
             <tr>
-                <td>Flipr</td>
-                <td>Flipr@gmail.com</td>
-                <td>Designer</td>
-                <td>12-02-2021</td>
+                <td>{{this.startupName}}</td>
+                <td>{{this.startupEmail}}</td>
+                <td>{{this.startupNature}}</td>
+                <td>{{this.DOI}}</td>
             </tr>
-            <tr>
-                <td>Brokers on the Bay</td>
-                <td>brokerb@gmail.com</td>
-                <td>Backend Developer</td>
-                <td>13-02-2021</td>
-            </tr>
-            <tr>
-                <td>Esurfer</td>
-                <td>esurf@gmail.com</td>
-                <td>Designer</td>
-                <td>12-02-2021</td>
-            </tr>
+            {{/each}}
         </tbody>
     </table><br><br>
        </div>
