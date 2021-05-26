@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const db = require('../helpers/dbServices');
 
-let type="";
 router.get('/', function(req, res){
     console.log(req.session.email);
     console.log(req.session.type);
@@ -21,18 +20,50 @@ router.get("/login", function(req,res) {
 
 
 router.get("/home", function(req, res){
-    if(req.session.email !== undefined){
-        try {
-            db.returnStartup((result)=>{
-                console.log(result[0].startupName);
-                res.render('cards', {
-                    startups: result
-                });
-            });
-        } catch (err) {
-            console.error(err);
-        }
+  if(req.session.email !== undefined){
+    if(type==="investor"){
+      try {
+        db.returnStartup((result)=>{
+        console.log(result[0].startupLogo);
+        res.render('cards_investor', {
+          email: req.session.email,
+          startups:result
+        })
+        //console.log("hello");
+      });//db
+      } catch (err) {
+        console.error(err);
+      }
+   }
+   else if (type==="intern"){
+    try {
+      db.returnStartup((result)=>{
+      console.log(result[0].startupLogo);
+      res.render('cards_intern', {
+        email: req.session.email,
+        startups:result
+      })
+      //console.log("hello");
+    });//db
+    } catch (err) {
+      console.error(err);
     }
+   }//else if
+   else{
+    try {
+      db.returnStartup((result)=>{
+      console.log(result[0].startupLogo);
+      res.render('cards_startup', {
+        email: req.session.email,
+        startups:result
+      })
+      //console.log("hello");
+    });//db
+    } catch (err) {
+      console.error(err);
+    }
+   }    
+  }//if signed in
 });
 
 router.get("/signup/signup_investor", function(req,res){
@@ -52,37 +83,57 @@ router.get("/logout", function(req, res){
 });
 
 router.get("/account", function(req,res){
+    let type=req.session.type;
     if(type==="investor"){
-        try {
-            console.log(req.session.email);
-            res.render('account_investor', {
-              email: req.session.email
-            }); 
-          } catch (err) {
-            console.error(err);
-          }
-    }
-    else if(type==="intern")
-    {
-        try {
-            console.log(req.session.email);
-            res.render('account_intern', {
-              email: req.session.email
-            }); 
-          } catch (err) {
-            console.error(err);
-          }
-    }
-    else{
-         try {
-        console.log(req.session.email);
-        res.render('account_startup', {
-          email: req.session.email
-        }); 
+      try {
+        db.returnInvestor(req.session.email,(result)=>{
+        res.render('account_investor', {
+          compEmail: req.session.email,
+          compType:result[0].companyType,
+          compName:result[0].companyName
+        })
+      });//db
       } catch (err) {
         console.error(err);
       }
     }
-});
+    else if(type==="intern")
+    {
+      try {
+        db.returnInternDetails(req.session.email,(result)=>{
+        res.render('account_intern', {
+          internEmail: result[0].internEmail,
+          internName:result[0].internName,
+          college:result[0].college, 
+          department:result[0].department, 
+          qualifications:result[0].qualification,
+          collegeDegree:result[0].collegeDegree,
+          internDOB:result[0].internDOB,
+          graduationYear:result[0].graduationYear
+        })
+      });//db
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    else{
+      
+      try {
+        db.returnStartupDetails(req.session.email,(result)=>{
+        res.render('account_startup', {
+          startupEmail: result[0].startupEmail,
+          startName:result[0].startupName,
+          startCIN:result[0].startupCIN, 
+          startStage:result[0].startupStage, 
+          startNature:result[0].startupNature, 
+          startWebsiteLink:result[0].startupWebsiteLink, 
+          startDetails:result[0].startupDetails
+        })
+      });//db
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    });
 
 module.exports = router;

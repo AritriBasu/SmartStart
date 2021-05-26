@@ -72,7 +72,7 @@ function insertNewStartup(startupEmail, startupName, startupCIN, startupPassword
 function returnStartup(next){
 
     let query = 
-    "SELECT startupLogo, startupEmail, startupStage, startupIndustry FROM Startup;";
+    "SELECT startupLogo, startupEmail, startupStage, startupIndustry, startupNature FROM Startup;";
     con.query(query,function(err, result){
         if(err){
             console.log(err);
@@ -81,6 +81,46 @@ function returnStartup(next){
         }
     });
 }
+
+function returnStartupDetails(email, next){
+
+    let query = 
+    "SELECT startupName, startupEmail, startupCIN, startupStage, startupNature, startupWebsiteLink, startupDetails FROM Startup where startupEmail=?;";
+    con.query(query, [email],function(err, result){
+        if(err){
+            console.log(err);
+        }else{
+            next(result);
+        }
+    });
+}
+
+function returnInternDetails(email, next){
+
+    let query = 
+    "SELECT internName, internEmail, college, department, qualification, collegeDegree, internDOB, graduationYear from INTERN where internEmail=?;";
+    con.query(query, [email],function(err, result){
+        if(err){
+            console.log(err);
+        }else{
+            next(result);
+        }
+    });
+}
+
+function returnInvestor(email,next){
+
+    let query = 
+    "SELECT companyEmail, companyType, companyName FROM Investor where companyEmail=?";
+    con.query(query,[email],function(err, result){
+        if(err){
+            console.log(err);
+        }else{
+            next(result);
+        }
+    });
+}
+
 
 function insertFounders(startupEmail, founders, next){
     let query = "INSERT INTO StartupFounders VALUES ";
@@ -144,5 +184,8 @@ module.exports = {
     insertNewStartup: insertNewStartup,
     insertFounders: insertFounders,
     insertInternPos: insertInternPos,
-    returnStartup:returnStartup
+    returnStartup:returnStartup,
+    returnInvestor:returnInvestor,
+    returnStartupDetails:returnStartupDetails, 
+    returnInternDetails:returnInternDetails
 };

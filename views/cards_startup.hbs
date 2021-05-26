@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Startup Cards</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body id="card-page-body">
+   {{> _header}}
+    <div class="container-cards">
+       <div class="grid">
+             {{#each startups}}
+            <div class="grid-item">
+                <div class="card">
+                    <img class="card-img" src="{{this.startupLogo}}" alt="{{this.startupName}}" />
+                    <div class="card-content">
+                       
+                        <h1 class="card-header">{{this.startupName}}</h1>
+                        <p>
+                           <p class="card-text">{{this.startupDetails}}</p>
+                           <p class="card-text"><span class="text-head">EMAIL: </span>{{this.startupEmail}}</p>
+                           <p class="card-text"><span class="text-head">STARTUP STAGE: </span>{{this.startupStage}}</p>
+                           <p class="card-text"><span class="text-head">INDUSTRY: </span>{{this.startupNature}}</p>
+                        </p>
+                        <a href="{{this.startupWebsiteLink}}"><button class="card-btn">Visit <span>&rarr;</span></button></a>
+                    </div>
+                </div>
+            </div>
+             {{/each}}
+         </div>
+    </div>
+</body>
+
+</html>

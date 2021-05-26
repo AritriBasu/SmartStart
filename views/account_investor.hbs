@@ -5,25 +5,17 @@
 </head>
 
 <body>
+    {{> _header}}
    <div class="container">
        <div class="main">
-           <div class="topbar">
-              <a href="">Logout</a>
-              <a href="">Contact</a>
-              <a href="#content-table">Invested Startups</a>
-              <a href="">Home</a>
-
            </div>
            <div class="row">
              <div class="col-md-4 mt-1">
                  <div class="card text-center sidebar">
                    <div class="card-body">
+                       <img src="/images/broker.png" class="rounded-circle" width="150">
                      <div class="mt-3">
- 					     <h3>Company Name</h3>
-                          <br>
-                         {{!-- <a href="">Work</a> --}}
-                         <a href="">Company type</a>
-                         <a href="">Contact Us</a>
+                         <a href="">Investor Account</a>
                     </div>
                   </div>
                 </div>
@@ -37,7 +29,7 @@
                                <h5>Company Name</h5>
                              </div>
                              <div class="col-md-9 text-secondary">
-                                 {Flipr}
+                                 {{compName}}
                              </div>
                          </div>
                          <hr>
@@ -46,16 +38,16 @@
                               <h5>Email</h5>
                             </div>
                             <div class="col-md-9 text-secondary">
-                               {{email}}
+                               {{compEmail}}
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                            <div class="col-md-3">
-                                <h5>Type</h5>
+                                <h5>Company Type</h5>
                            </div>
                            <div class="col-md-9 text-secondary">
-                              {Investor}
+                              {{compType}}
                            </div>
                         </div>
                         <hr>
