@@ -88,6 +88,33 @@ function returnStartup(email, type, next){
     });
 }
 
+function returnStartupDetails(email, next){
+
+    let query = 
+    "SELECT startupName, startupEmail, startupCIN, startupStage, startupNature, startupWebsiteLink, startupDetails FROM Startup where startupEmail=?;";
+    con.query(query, [email],function(err, result){
+        if(err){
+            console.log(err);
+        }else{
+            next(result);
+        }
+    });
+}
+
+function returnInternDetails(email, next){
+
+    let query = 
+    "SELECT internName, internEmail, college, department, qualification, collegeDegree, internDOB, graduationYear from INTERN where internEmail=?;";
+    con.query(query, [email],function(err, result){
+        if(err){
+            console.log(err);
+        }else{
+            next(result);
+        }
+    });
+}
+
+
 function returnInvestor(email,next){
 
     let query = 
@@ -194,5 +221,7 @@ module.exports = {
     returnStartup: returnStartup,
     returnInvestor: returnInvestor,
     insertInternApplication: insertInternApplication,
-    insertInvestApplication: insertInvestApplication
+    insertInvestApplication: insertInvestApplication,
+    returnStartupDetails:returnStartupDetails, 
+    returnInternDetails:returnInternDetails
 };
