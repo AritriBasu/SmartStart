@@ -5,16 +5,16 @@
 
 <body>
     {{> _header}}
-   <div class="container">
+   <div class="container-account">
        <div class="main">
            </div>
            <div class="row">
              <div class="col-md-4 mt-1">
                  <div class="card text-center sidebar">
                    <div class="card-body">
-                     <img src="/images/broker.png" class="rounded-circle" width="150">
+                     <img src="{{startlogo}}" class="rounded-circle" width="150">
                      <div class="mt-3">
- 					     <h3>Startup Account</h3>                         
+ 					     <h3>{{startName}}</h3>                         
                     </div>
                   </div>
                 </div>
@@ -96,10 +96,11 @@
     <table class="content-table">
         <thead>
             <tr>
-                <th>Intern</th>
+                <th>Intern name</th>
                 <th>Email</th>
                 <th>Department</th>
                 <th>Date of Application</th>
+                <th colspan="2">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -109,6 +110,20 @@
                 <td>{{this.internEmail}}</td>
                 <td>{{this.department}}</td>
                 <td>{{this.DOA}}</td>
+                <td> 
+                    <form action="/actionIntern" method="POST">
+                    <input type="hidden" name="internEmail" value="{{this.internEmail}}">
+                    <input type="hidden" name="status" value="A">
+                    <input type="submit" value ="Accept">
+                    </form>
+                </td>
+                <td> 
+                    <form action="/actionIntern" method="POST">
+                    <input type="hidden" name ="internEmail" value="{{this.internEmail}}">
+                    <input type="hidden" name="status" value="R">
+                    <input type="submit" value ="Reject">
+                    </form>
+                </td>
             </tr>
             {{/each}}
         </tbody>
