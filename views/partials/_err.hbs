@@ -1,0 +1,38 @@
+
+
+{{#if errmsg}}
+<style>
+.ShowHide {
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #7851AE;
+    color: #FFFFFF;
+    padding:4px;
+  }
+#left {
+    overflow: hidden;
+    text-align: center;
+    height: 20px;
+  }
+#right {
+    float: right;
+    width: 30px;
+    height: 20px;
+    text-align: center;
+  }
+</style>
+
+<div class="ShowHide" id="Bar">
+    <div id="right">
+    <a href="#" onclick="Hide(Bar);">X</a>
+    </div>
+<div id="left">
+{{errmsg}}
+</div>
+</div>
+<script>
+    function Hide(HideID) {
+        HideID.style.display = "none"; 
+    }
+</script>
+{{/if}}

@@ -10,9 +10,20 @@ router.get('/', function(req, res){
     console.log(req.session.email);
     console.log(req.session.type);
     
-    res.render('index', {
-        headerData: frontendData.getHeaderLoginData(req.session)
-    });
+    if(req.session !== undefined && req.session.error === true){
+        req.session.error = false;
+        let msg = req.session.errmsg;
+        req.session.errmsg = undefined;
+
+        res.render('index', {
+            headerData: frontendData.getHeaderLoginData(req.session),
+            errmsg: msg
+        });
+    }else {
+        res.render('index', {
+            headerData: frontendData.getHeaderLoginData(req.session)
+        });
+    }
 });
 
 router.get("/login", function(req,res) {
@@ -20,7 +31,15 @@ router.get("/login", function(req,res) {
         res.redirect("/home")
     }
     else{
-        res.render('login');
+        if(req.session !== undefined && req.session.error === true){
+            req.session.error = false;
+            let msg = req.session.errmsg;
+            req.session.errmsg = undefined;
+
+            res.render('login', {errmsg: msg});
+        }else {
+            res.render('login');
+        }
     }
 });
 

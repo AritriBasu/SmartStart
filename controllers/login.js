@@ -11,6 +11,10 @@ router.post('/login', function(req, res){
         req.session.email = e;
         req.session.type = i;
         res.redirect('/');
+    }, () => {
+        req.session.error = true;
+        req.session.errmsg = "Login failed.";
+        res.redirect('/login');
     });
     
 });

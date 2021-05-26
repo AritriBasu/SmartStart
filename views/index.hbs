@@ -11,16 +11,7 @@
 </head>
 
 <body>
-  {{#if errmsg}}
-    <div class="ShowHide" id="Bar">
-      <div id="right">
-      <a href="#" onclick="Hide(Bar);">X</a>
-     </div>
-   <div id="left">
-    {{errmsg}}
-   </div>
- </div>
-  {{/if}}
+  {{> _err}}
   {{> _header}}
   <div class="container">
     <img class="cover" src="images/cover.png">
