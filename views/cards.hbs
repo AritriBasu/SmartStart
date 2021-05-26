@@ -25,8 +25,11 @@
                            <p class="card-text"><span class="text-head">INDUSTRY:</span>{{this.startupNature}}</p>
                         </p>
                         <a href="{{this.startupWebsiteLink}}"><button class="card-btn">Visit <span>&rarr;</span></button></a>
-                        <button class="card-btn">Apply as intern</button>
-                        <button class="card-btn">Apply as investor</button>
+                        {{#if ../buttonData.display}}
+                            <a href = "{{../buttonData.label}}"> 
+                                <button class="card-btn" >{{../buttonData.label}}</button>
+                            </a>
+                        {{/if}}
                     </div>
                 </div>
             </div>

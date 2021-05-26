@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../helpers/dbServices');
+const frontendData = require("../helpers/frontendData")
 
 router.get('/', function(req, res){
     console.log(req.session.email);
     console.log(req.session.type);
-    type=req.session.type;
-    res.render('index');
+    
+    res.render('index', {
+        headerData: frontendData.getHeaderLoginData(req.session)
+    });
 });
 
 router.get("/login", function(req,res) {
@@ -23,9 +26,13 @@ router.get("/home", function(req, res){
     if(req.session.email !== undefined){
         try {
             db.returnStartup((result)=>{
-                console.log(result[0].startupName);
+                let b = frontendData.getCardsUserType(req.session);
+                console.log(b);
+
                 res.render('cards', {
-                    startups: result
+                    startups: result,
+                    headerData: frontendData.getHeaderLoginData(req.session),
+                    buttonData: b 
                 });
             });
         } catch (err) {
@@ -47,11 +54,12 @@ router.get("/signup/signup_intern", function(req,res){
 });
 
 router.get("/logout", function(req, res){
-
+    req.session.destroy();
+    res.redirect('/');
 });
 
 router.get("/account", function(req,res){
-    let type=req.session.type;
+    let type = req.session.type;
     if(type==="investor"){
       try {
         db.returnInvestor(req.session.email,(result)=>{
@@ -87,5 +95,8 @@ router.get("/account", function(req,res){
       }
     }
 });
+
+
+
 
 module.exports = router;
