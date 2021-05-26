@@ -145,7 +145,7 @@ button:hover {
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #355c5e;
+    background-color: #7851AE;
 }
 
 /* footer p {
@@ -302,7 +302,7 @@ input, select, textarea {
   
   /* Style the submit button with a specific background color etc */
   input[type=submit] {
-    background-color: #4CAF50;
+    background-color: #4c3a66;
     color: white;
     font-weight: 700;
     padding: 12px 20px;
@@ -313,7 +313,7 @@ input, select, textarea {
   
   /* When moving the mouse over the submit button, add a darker green color */
   input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #af76ff;
   }
   
   label {
