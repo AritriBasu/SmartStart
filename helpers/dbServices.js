@@ -69,11 +69,17 @@ function insertNewStartup(startupEmail, startupName, startupCIN, startupPassword
     );
 }
 
-function returnStartup(next){
+function returnStartup(email, type, next){
+    let query;
+    if(type === "investor"){
+        query = 
+        "SELECT startupLogo, startupEmail, startupStage, startupIndustry, startupWebsiteLink FROM Startup WHERE startupEmail NOT IN (SELECT s.startupEmail FROM Startup s INNER JOIN InvestsIn ii ON s.startupEmail = ii.startupEmail WHERE ii.companyEmail = ?);";    
+    }else if (type === "intern"){
+        query = 
+        "SELECT startupLogo, startupEmail, startupStage, startupIndustry, startupWebsiteLink FROM Startup WHERE startupEmail NOT IN (SELECT s.startupEmail FROM Startup s INNER JOIN AppliesTo at2 ON s.startupEmail = at2.startupEmail WHERE at2.internEmail = ?);";    
+    } 
 
-    let query = 
-    "SELECT startupLogo, startupEmail, startupStage, startupIndustry FROM Startup;";
-    con.query(query,function(err, result){
+    con.query(query, [email], function(err, result){
         if(err){
             console.log(err);
         }else{
@@ -150,6 +156,33 @@ function authenticateUser(email, password, next) {
     });
 }
 
+function insertInternApplication(internEmail, startupEmail, DOA, next){
+    let query =
+    "INSERT INTO AppliesTo VALUES (?, ?, ?, 'P');" 
+
+    con.query(query, [internEmail, startupEmail, DOA], function(err) {
+        if(err){
+            console.log(err);
+        }else {
+            next();
+        }
+    });
+}
+
+
+function insertInvestApplication(investorEmail, DOI, startupEmail, next){
+    let query =
+    "INSERT INTO InvestsIn VALUES (?, ?, ?);" 
+
+    con.query(query, [investorEmail, DOI, startupEmail], function(err) {
+        if(err){
+            console.log(err);
+        }else {
+            next();
+        }
+    });
+} 
+
 module.exports = {
     validateEmail: validateEmail,
     insertNewInvestor: insertNewInvestor,
@@ -158,6 +191,8 @@ module.exports = {
     insertNewStartup: insertNewStartup,
     insertFounders: insertFounders,
     insertInternPos: insertInternPos,
-    returnStartup:returnStartup,
-    returnInvestor:returnInvestor
+    returnStartup: returnStartup,
+    returnInvestor: returnInvestor,
+    insertInternApplication: insertInternApplication,
+    insertInvestApplication: insertInvestApplication
 };

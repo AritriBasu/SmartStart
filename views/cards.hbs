@@ -22,13 +22,14 @@
                            <p class="card-text">{{this.startupDetails}}</p>
                            <p class="card-text"><span class="text-head">EMAIL:</span>{{this.startupEmail}}</p>
                            <p class="card-text"><span class="text-head">STARTUP STAGE:</span>{{this.startupStage}}</p>
-                           <p class="card-text"><span class="text-head">INDUSTRY:</span>{{this.startupNature}}</p>
+                           <p class="card-text"><span class="text-head">INDUSTRY:</span>{{this.startupIndustry}}</p>
                         </p>
                         <a href="{{this.startupWebsiteLink}}"><button class="card-btn">Visit <span>&rarr;</span></button></a>
                         {{#if ../buttonData.display}}
-                            <a href = "{{../buttonData.label}}"> 
-                                <button class="card-btn" id="send">{{../buttonData.label}}</button>
-                            </a>
+                            <form action = "{{../buttonData.link}}" method = "POST">
+                                <input type="hidden" name="startupEmail" value="{{startupEmail}}">
+                                <input type="submit" class="card-btn" value="{{../buttonData.label}}">
+                            </form>
                         {{/if}}
                     </div>
                 </div>
@@ -36,12 +37,7 @@
              {{/each}}
          </div>
     </div>
-    <script>
-        $("#send").click(function() {
-            $.get("{{buttonData.link}}", { startup:  }) 
-        });
-    </script>
+
 
 </body>
-
 </html>
