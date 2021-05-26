@@ -80,8 +80,9 @@ router.get("/account", function(req,res){
         db.returnInvestor(req.session.email,(result)=>{
         res.render('account_investor', {
           compEmail: req.session.email,
-          compType:result[0].companyType,
-          compName:result[0].companyName
+          compType:result[0][0].companyType,
+          compName:result[0][0].companyName,
+          tableRow:result[1]
         })
       });//db
       } catch (err) {
@@ -93,14 +94,15 @@ router.get("/account", function(req,res){
       try {
         db.returnInternDetails(req.session.email,(result)=>{
         res.render('account_intern', {
-          internEmail: result[0].internEmail,
-          internName:result[0].internName,
-          college:result[0].college, 
-          department:result[0].department, 
-          qualifications:result[0].qualification,
-          collegeDegree:result[0].collegeDegree,
-          internDOB:result[0].internDOB,
-          graduationYear:result[0].graduationYear
+          internEmail: result[0][0].internEmail,
+          internName:result[0][0].internName,
+          college:result[0][0].college, 
+          department:result[0][0].department, 
+          qualifications:result[0][0].qualification,
+          collegeDegree:result[0][0].collegeDegree,
+          internDOB:result[0][0].internDOB,
+          graduationYear:result[0][0].graduationYear,
+          tableApplies:result[1]
         })
       });//db
       } catch (err) {
@@ -112,13 +114,15 @@ router.get("/account", function(req,res){
       try {
         db.returnStartupDetails(req.session.email,(result)=>{
         res.render('account_startup', {
-          startupEmail: result[0].startupEmail,
-          startName:result[0].startupName,
-          startCIN:result[0].startupCIN, 
-          startStage:result[0].startupStage, 
-          startNature:result[0].startupNature, 
-          startWebsiteLink:result[0].startupWebsiteLink, 
-          startDetails:result[0].startupDetails
+          startupEmail: result[0][0].startupEmail,
+          startName:result[0][0].startupName,
+          startCIN:result[0][0].startupCIN, 
+          startStage:result[0][0].startupStage, 
+          startNature:result[0][0].startupNature, 
+          startWebsiteLink:result[0][0].startupWebsiteLink, 
+          startDetails:result[0][0].startupDetails,
+          tableIntern:result[1],
+          tableInvestor:result[2]
         })
       });//db
       } catch (err) {

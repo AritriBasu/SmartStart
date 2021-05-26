@@ -103,24 +103,14 @@
             </tr>
         </thead>
         <tbody>
+            {{#each tableIntern}}
             <tr>
-                <td>Mark</td>
-                <td>mark@gmail.com</td>
-                <td>Aeronautical Engineering</td>
-                <td>23-02-2021</td>
+                <td>{{this.internName}}</td>
+                <td>{{this.internEmail}}</td>
+                <td>{{this.department}}</td>
+                <td>{{this.DOA}}</td>
             </tr>
-            <tr>
-                <td>Robert</td>
-                <td>robert@gmail.com</td>
-                <td>Automobile Engineering</td>
-                <td>13-01-2021</td>
-            </tr>
-            <tr>
-                <td>John</td>
-                <td>john@gmail.com</td>
-                <td>Information Technology</td>
-                <td>21-03-2021</td>
-            </tr>
+            {{/each}}
         </tbody>
     </table>
     <br><br>
@@ -135,24 +125,14 @@
             </tr>
         </thead>
         <tbody>
+             {{#each tableInvestor}}
             <tr>
-                <td>Barclays Capital</td>
-                <td>barclays@gmail.com</td>
-                <td>CS/IT</td>
-                <td>23-02-2021</td>
+                <td>{{this.companyName}}</td>
+                <td>{{this.companyEmail}}</td>
+                <td>{{this.companyType}}</td>
+                <td>{{this.DOI}}</td>
             </tr>
-            <tr>
-                <td>UITs</td>
-                <td>uit@gmail.com</td>
-                <td>Income Funds Investment</td>
-                <td>13-01-2021</td>
-            </tr>
-            <tr>
-                <td>Credit Suisse</td>
-                <td>creditsuisse@gmail.com</td>
-                <td>Wealth management firm</td>
-                <td>21-03-2021</td>
-            </tr>
+            {{/each}}
         </tbody>
     </table>
 	 	     <br><br>   

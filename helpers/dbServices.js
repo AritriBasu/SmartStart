@@ -91,8 +91,9 @@ function returnStartup(email, type, next){
 function returnStartupDetails(email, next){
 
     let query = 
-    "SELECT startupName, startupEmail, startupCIN, startupStage, startupNature, startupWebsiteLink, startupDetails FROM Startup where startupEmail=?;";
-    con.query(query, [email],function(err, result){
+    "SELECT startupName, startupEmail, startupCIN, startupStage, startupNature, startupWebsiteLink, startupDetails FROM Startup where startupEmail=?; SELECT intern.internEmail, internName, department, DOA from appliesto, intern where intern.internEmail = appliesto.internEmail AND startupEmail=?;SELECT investor.companyEmail, DOI, companyName, companyType from InvestsIn, Investor where investsin.companyEmail=investor.companyEmail and investsin.startupEmail=?;";
+    
+    con.query(query, [email,email,email],function(err, result){
         if(err){
             console.log(err);
         }else{
@@ -104,8 +105,8 @@ function returnStartupDetails(email, next){
 function returnInternDetails(email, next){
 
     let query = 
-    "SELECT internName, internEmail, college, department, qualification, collegeDegree, internDOB, graduationYear from INTERN where internEmail=?;";
-    con.query(query, [email],function(err, result){
+    "SELECT internName, internEmail, college, department, qualification, collegeDegree, internDOB, graduationYear from INTERN where internEmail=?;SELECT startup.startupEmail, DOA, startupName from startup, appliesto where startup.startupEmail=appliesto.startupEmail and internEmail=?";
+    con.query(query, [email,email],function(err, result){
         if(err){
             console.log(err);
         }else{
@@ -118,8 +119,8 @@ function returnInternDetails(email, next){
 function returnInvestor(email,next){
 
     let query = 
-    "SELECT companyEmail, companyType, companyName FROM Investor where companyEmail=?";
-    con.query(query,[email],function(err, result){
+    "SELECT companyEmail, companyType, companyName FROM Investor where companyEmail=?;SELECT startup.startupEmail, DOI, startupName, startupNature from InvestsIn, Startup where investsin.startupEmail=startup.startupEmail and investsin.companyEmail=?";
+    con.query(query,[email,email],function(err, result){
         if(err){
             console.log(err);
         }else{
@@ -201,7 +202,7 @@ function insertInvestApplication(investorEmail, DOI, startupEmail, next){
     let query =
     "INSERT INTO InvestsIn VALUES (?, ?, ?);" 
 
-    con.query(query, [investorEmail, DOI, startupEmail], function(err) {
+    con.query(query, [investorEmail, startupEmail, DOI], function(err) {
         if(err){
             console.log(err);
         }else {
@@ -209,6 +210,7 @@ function insertInvestApplication(investorEmail, DOI, startupEmail, next){
         }
     });
 } 
+
 
 module.exports = {
     validateEmail: validateEmail,
