@@ -182,30 +182,6 @@ SELECT * FROM Investor;
 
 /*
  * 
- * 					PROJECTS TABLE
- * 
- * */
-
-CREATE TABLE Projects(
-	projName varchar(256) NOT NULL,
-	image varchar(256) NOT NULL,
-	description TEXT(512) NOT NULL,
-	startupEmail varchar(256) NOT NULL
-);
-
-ALTER TABLE Projects
-ADD CONSTRAINT pk_projects PRIMARY KEY (projName);
-
-INSERT INTO Projects VALUES('UniversityFinder','http://www.google.com/images/projects','Very good Company','startup@gmail.com');
-
-ALTER TABLE Projects 
-ADD CONSTRAINT fk_startupemail_projects_startup 
-FOREIGN KEY (startupEmail) REFERENCES Startup(startupEmail);
-
-SELECT * FROM Projects;
-
-/*
- * 
  * 					END PROJECTS TABLE
  * 
  */
@@ -226,27 +202,24 @@ SELECT * FROM Projects;
 
 CREATE TABLE InvestsIn(
 	companyEmail varchar(256) NOT NULL,
-	projName varchar(256) NOT NULL,
-	DOI date NOT NULL,
-	budget BIGINT NOT NULL
+	startupEmail varchar(256) NOT NULL,
+	DOI date NOT NULL
 );
 
+ALTER TABLE InvestsIn DROP PRIMARY KEY;
+
 ALTER TABLE InvestsIn
-ADD CONSTRAINT pk_investsin PRIMARY KEY (companyEmail, projName);
+ADD CONSTRAINT pk_investsin PRIMARY KEY (companyEmail, startupEmail);
 
 ALTER TABLE InvestsIn 
 ADD CONSTRAINT fk_companyemail_investsin_investor
 FOREIGN KEY (companyEmail) REFERENCES Investor(companyEmail);
 
 ALTER TABLE InvestsIn 
-ADD CONSTRAINT fk_projName_investsin_projects
-FOREIGN KEY (projName) REFERENCES Projects(projName);
-
-ALTER TABLE InvestsIn
-ADD CONSTRAINT check_budget_range CHECK (budget>0);
+ADD CONSTRAINT fk_startupemail_investsin_startup
+FOREIGN KEY (startupEmail) REFERENCES Startup(startupEmail);
  
-
-INSERT INTO InvestsIn VALUES('investor@gmail.com','UniversityFinder','2020-05-12', 200000);
+INSERT INTO InvestsIn VALUES('investor@gmail.com', '2020-05-12', 'startup@gmail.com');
 SELECT * FROM InvestsIn;
 /*
  * 
@@ -321,7 +294,7 @@ ALTER TABLE AppliesTo
 ADD CONSTRAINT fk_startupemail_apppliesto_startup
 FOREIGN KEY (startupEmail) REFERENCES Startup(startupEmail);
 
-INSERT INTO AppliesTo VALUES('intern@gmail.com','startup@gmail.com','2020-05-12','A');
+INSERT INTO AppliesTo VALUES('intern@gmail.com','startup@gmail.com','2020-05-12', 'A');
 
 SELECT * FROM AppliesTo;
 /*
