@@ -74,7 +74,7 @@ router.post("/applyAsInvestor", function(req, res){
 });
 
 router.get("/account", function(req,res){
-    let type = req.session.type;
+    let type=req.session.type;
     if(type==="investor"){
       try {
         db.returnInvestor(req.session.email,(result)=>{
@@ -90,28 +90,41 @@ router.get("/account", function(req,res){
     }
     else if(type==="intern")
     {
-        try {
-            console.log(req.session.email);
-            res.render('account_intern', {
-              email: req.session.email
-            }); 
-          } catch (err) {
-            console.error(err);
-          }
-    }
-    else{
-         try {
-        console.log(req.session.email);
-        res.render('account_startup', {
-          email: req.session.email
-        }); 
+      try {
+        db.returnInternDetails(req.session.email,(result)=>{
+        res.render('account_intern', {
+          internEmail: result[0].internEmail,
+          internName:result[0].internName,
+          college:result[0].college, 
+          department:result[0].department, 
+          qualifications:result[0].qualification,
+          collegeDegree:result[0].collegeDegree,
+          internDOB:result[0].internDOB,
+          graduationYear:result[0].graduationYear
+        })
+      });//db
       } catch (err) {
         console.error(err);
       }
     }
-});
-
-
-
+    else{
+      
+      try {
+        db.returnStartupDetails(req.session.email,(result)=>{
+        res.render('account_startup', {
+          startupEmail: result[0].startupEmail,
+          startName:result[0].startupName,
+          startCIN:result[0].startupCIN, 
+          startStage:result[0].startupStage, 
+          startNature:result[0].startupNature, 
+          startWebsiteLink:result[0].startupWebsiteLink, 
+          startDetails:result[0].startupDetails
+        })
+      });//db
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    });
 
 module.exports = router;
