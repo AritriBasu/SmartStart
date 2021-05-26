@@ -66,8 +66,6 @@ router.post('/startupSignUp', upload.single("startupLogo"), function(req, res) {
     const tempPath = req.file.path;
     const targetPath = './public/userImages/companylogos/' + startupCIN + path.extname(req.file.originalname).toLowerCase();
     const dbPath = 'userImages/companylogos/' + startupCIN + path.extname(req.file.originalname).toLowerCase();
-    console.log(targetPath);
-    console.log(tempPath);
 
     fs.rename(tempPath, targetPath, (err) => {
         if(err){
