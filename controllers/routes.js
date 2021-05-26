@@ -25,14 +25,11 @@ router.get("/login", function(req,res) {
 router.get("/home", function(req, res){
     if(req.session.email !== undefined){
         try {
-            db.returnStartup((result)=>{
-                let b = frontendData.getCardsUserType(req.session);
-                console.log(b);
-
+            db.returnStartup(req.session.email, req.session.type, (result) => {
                 res.render('cards', {
                     startups: result,
                     headerData: frontendData.getHeaderLoginData(req.session),
-                    buttonData: b 
+                    buttonData: frontendData.getCardsUserType(req.session) 
                 });
             });
         } catch (err) {
@@ -56,6 +53,24 @@ router.get("/signup/signup_intern", function(req,res){
 router.get("/logout", function(req, res){
     req.session.destroy();
     res.redirect('/');
+});
+
+router.post("/applyAsIntern", function(req, res){
+    let startupEmail = req.body.startupEmail;
+    let date = new Date();
+    date.toISOString().split('T')[0];
+    db.insertInternApplication(req.session.email, startupEmail, date, () => {
+        res.redirect("/home");
+    });
+});
+
+router.post("/applyAsInvestor", function(req, res){
+    let startupEmail = req.body.startupEmail;
+    let date = new Date();
+    date.toISOString().split('T')[0];
+    db.insertInvestApplication(req.session.email, date, startupEmail, () => {
+        res.redirect("/home");
+    });
 });
 
 router.get("/account", function(req,res){
