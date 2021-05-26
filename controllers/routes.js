@@ -83,14 +83,22 @@ router.post("/applyAsInvestor", function(req, res){
     });
 });
 
+router.post("/actionIntern", function(req, res){
+    if(req.session.email !== undefined && req.session.type === "startup"){
+        let internEmail = req.body.internEmail;
+        let status = req.body.status;
+        db.updateApplicationStatus(internEmail, req.session.email, status,() =>{
+            res.redirect("/account");
+        });
+    }
+});
+
 router.get("/account", function(req,res){
     let type=req.session.type;
     if(type==="investor"){
       try {
         db.returnInvestor(req.session.email,(result)=>{
         res.render('account_investor', {
-          headerData: frontendData.getHeaderLoginData(req.session),
-          buttonData: frontendData.getCardsUserType(req.session),
           compEmail: req.session.email,
           compType:result[0][0].companyType,
           compName:result[0][0].companyName,
@@ -106,10 +114,21 @@ router.get("/account", function(req,res){
     else if(type==="intern")
     {
       try {
-        db.returnInternDetails(req.session.email,(result)=>{
+        db.returnInternDetails(req.session.email, (result)=>{
+            let tableData = [];
+            for(let i of result[1]){
+                if(i.status === "A"){
+                    i.status = "Accepted";
+                }else if (i.status === "R"){
+                    i.status = "Rejected";
+                }else if (i.status === "P"){
+                    i.status = "Pending";
+                }
+                tableData.push(i);
+            }
+
+
         res.render('account_intern', {
-          headerData: frontendData.getHeaderLoginData(req.session),
-          buttonData: frontendData.getCardsUserType(req.session),
           internEmail: result[0][0].internEmail,
           internName:result[0][0].internName,
           college:result[0][0].college, 
@@ -118,7 +137,7 @@ router.get("/account", function(req,res){
           collegeDegree:result[0][0].collegeDegree,
           internDOB:result[0][0].internDOB,
           graduationYear:result[0][0].graduationYear,
-          tableApplies:result[1],
+          tableApplies:tableData,
           headerData: frontendData.getHeaderLoginData(req.session),
           buttonData: frontendData.getCardsUserType(req.session) 
         })
@@ -132,8 +151,6 @@ router.get("/account", function(req,res){
       try {
         db.returnStartupDetails(req.session.email,(result)=>{
         res.render('account_startup', {
-          headerData: frontendData.getHeaderLoginData(req.session),
-          buttonData: frontendData.getCardsUserType(req.session),
           startupEmail: result[0][0].startupEmail,
           startName:result[0][0].startupName,
           startCIN:result[0][0].startupCIN, 
@@ -141,6 +158,7 @@ router.get("/account", function(req,res){
           startNature:result[0][0].startupNature, 
           startWebsiteLink:result[0][0].startupWebsiteLink, 
           startDetails:result[0][0].startupDetails,
+          startlogo:result[0][0].startupLogo,
           tableIntern:result[1],
           tableInvestor:result[2],
           headerData: frontendData.getHeaderLoginData(req.session),

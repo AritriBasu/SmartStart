@@ -14,9 +14,9 @@
              <div class="col-md-4 mt-1">
                  <div class="card text-center sidebar">
                    <div class="card-body">
-                       <img src="/images/broker.png" class="rounded-circle" width="150">
+                       <img src="https://png.pngtree.com/png-vector/20191104/ourmid/pngtree-businessman-avatar-cartoon-style-png-image_1953664.jpg" class="rounded-circle" width="150">
                      <div class="mt-3">
-                         <a href="">Intern Account</a>
+                         <a href="">{{internName}}</a>
                     </div>
                   </div>
                 </div>
@@ -111,6 +111,7 @@
                 <th>Company</th>
                 <th>Email</th>
                 <th>Date of Application</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -119,6 +120,7 @@
                 <td>{{this.startupName}}</td>
                 <td>{{this.startupName}}</td>
                 <td>{{this.DOA}}</td>
+                <td>{{this.status}}</td>
             </tr>
             {{/each}}
         </tbody>
