@@ -207,16 +207,19 @@ function insertInternPos(startupEmail, internPosNeeded, next){
 
 }
 
-function authenticateUser(email, password, next) {
+function authenticateUser(email, password, next, errcb) {
     let query = 
     "SELECT * FROM ((SELECT internEmail as email, internPassword as password, 'intern' AS ID FROM Intern UNION SELECT companyEmail as email, companyPassword as password,'investor' AS ID FROM Investor UNION SELECT startupEmail as email, startupPassword as password, 'startup' AS ID FROM Startup) as login) WHERE email = ? and password = ?;";
     
     con.query(query, [email, password],function(err, result){
         if(err){
             console.log(err);
+            errcb();
         }else{
             if(result.length === 1){
                 next(result[0]["email"], result[0]["ID"]);
+            }else {
+                errcb();
             }
         }
     });

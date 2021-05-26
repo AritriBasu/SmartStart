@@ -41,8 +41,3 @@ function showSlides() {
 }
 showSlides();
 
-//error message
-function Hide(HideID) 
-{
-  HideID.style.display = "none"; 
-}
