@@ -69,10 +69,10 @@ function insertNewStartup(startupEmail, startupName, startupCIN, startupPassword
     );
 }
 
-function return_startup(next){
+function returnStartup(next){
 
     let query = 
-    "SELECT * FROM Startup";
+    "SELECT startupLogo, startupEmail, startupStage, startupIndustry FROM Startup;";
     con.query(query,function(err, result){
         if(err){
             console.log(err);
@@ -158,5 +158,5 @@ module.exports = {
     insertNewStartup: insertNewStartup,
     insertFounders: insertFounders,
     insertInternPos: insertInternPos,
-    return_startup:return_startup
+    returnStartup:returnStartup
 };
