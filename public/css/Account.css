@@ -1,94 +1,90 @@
 body{
-   margin-top: 20px;
-   background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
-
-}
-
-.main{
-   padding: 15px;
-   font-family: Arial, Helvetica, sans-serif;
-
-}
-.container{
-   height:100%;
-}
-
-.topbar{
-   background-color: #DFD3EB;
-   overflow: hidden;
-
-}
-
-.topbar a{
-
- float: right; 
- color: whitesmoke;
- text-align: center;
- padding: 20px 26px;
- text-decoration: none;
- font-size: 26px;
-
-} 
-
-.sidebar{
-     background-color: #333;
-    color: white; 
-    height: 100%;
-
-}
-
-.sidebar a{
- margin-left: 10px; 
- display: block;
- color: white;
- padding-bottom: 10px;
- font-size: 30px;
- text-decoration: none;
-}
-.card{
-
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-}
-
-/**table styles***/
-h1{
-   text-align: center;
-   color: #ffffff;
-}
-.content-table {
-   border-collapse: collapse;
-   margin-left: 25px 0;
-   font-size: 0.9em;
-   min-width: 500px;
-   width:100%;
-   border-radius: 5px 5px 0 0;
-   overflow: hidden;
-   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-.content-table thead tr {
-   background-color: #7851ae;
-   color: #ffffff;
-   text-align: left;
-   font-weight: bold;
-}
-
-.content-table th,
-.content-table td {
-   padding: 12px 15px;
-}
-
-.content-table tbody tr {
-   border-bottom: 1px solid #dddddd;
-}
-
-.content-table tbody tr {
-   background-color: #f3f3f3;
-}
-
-.content-table tbody tr:last-of-type {
-   border-bottom: 2px solid #7851AE;
-}
+    background-color: lightgray;
+ 
+ }
+ 
+ .main{
+    padding: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+ 
+ }
+ 
+ .topbar{
+    background-color: #DFD3EB;
+    overflow: hidden;
+ 
+ }
+ 
+ .topbar a{
+ 
+  float: right; 
+  color: whitesmoke;
+  text-align: center;
+  padding: 20px 26px;
+  text-decoration: none;
+  font-size: 26px;
+ 
+ } 
+ 
+ .sidebar{
+      background-color: #333;
+     color: white; 
+     height: 100%;
+ 
+ }
+ 
+ .sidebar a{
+  margin-left: 10px; 
+  display: block;
+  color: white;
+  padding-bottom: 10px;
+  font-size: 30px;
+  text-decoration: none;
+ }
+ .card{
+ 
+   position: relative;
+   display: flex;
+   flex-direction: column;
+ 
+ }
+ 
+ /**table styles***/
+ h1{
+    text-align: center;
+    color: rgba(0, 0, 0, 0.3);
+ }
+ .content-table {
+    border-collapse: collapse;
+    margin-left: 25px 0;
+    font-size: 0.9em;
+    min-width: 500px;
+    width:100%;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+ }
+ 
+ .content-table thead tr {
+    background-color: #7851ae;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+ }
+ 
+ .content-table th,
+ .content-table td {
+    padding: 12px 15px;
+ }
+ 
+ .content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+ }
+ 
+ .content-table tbody tr {
+    background-color: #f3f3f3;
+ }
+ 
+ .content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #7851AE;
+ }

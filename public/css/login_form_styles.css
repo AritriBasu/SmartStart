@@ -2,16 +2,15 @@ body{
     margin:0;
     padding:0;
     font-family:Arial;
-    background-position:center;
-    background-size: cover;
+    background-color: #DFD3EB;
+    background-image:linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 }
 .container-login{
     position:absolute;
+    background-image:linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-    height: 100%;
-    background-image:linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 }
 
 .center{
