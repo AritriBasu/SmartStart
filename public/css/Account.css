@@ -1,5 +1,4 @@
 body{
-   margin-top: 20px;
    background-color: lightgray;
 
 }
@@ -11,7 +10,7 @@ body{
 }
 
 .topbar{
-   background-color: teal;
+   background-color: #7851ae;
    overflow: hidden;
 
 }
@@ -67,7 +66,7 @@ h1{
 }
 
 .content-table thead tr {
-   background-color: #009879;
+   background-color: #7851ae;
    color: #ffffff;
    text-align: left;
    font-weight: bold;
