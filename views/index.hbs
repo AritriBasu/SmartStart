@@ -88,16 +88,19 @@
             <p>9856542112</p>
         </div>
         <div>
-            <form>
-    
+            <form action="submit-data" method="post">
+              {{#if msg}}
+                <p>Your query has been sent!</p>
+              {{/if}}
+
               <label for="fname">Full Name</label>
-              <input required type="text" id="fname" name="firstname" placeholder="Your name..">
+              <input required type="text" id="fname" name="name" placeholder="Your name..">
           
               <label for="lname">E-mail</label>
-              <input required type="email" id="lname" name="lastname" placeholder="Your e-mail address..">
+              <input required type="email" id="lname" name="email" placeholder="Your e-mail address..">
           
               <label for="subject">Message</label>
-              <textarea required id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea>
+              <textarea required id="subject" name="message" placeholder="Write something.." style="height:100px"></textarea>
           
               <input type="submit" value="Submit">
           
