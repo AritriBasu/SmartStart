@@ -11,12 +11,21 @@
 </head>
 
 <body>
+  {{#if errmsg}}
+    <div class="ShowHide" id="Bar">
+      <div id="right">
+      <a href="#" onclick="Hide(Bar);">X</a>
+     </div>
+   <div id="left">
+    {{errmsg}}
+   </div>
+ </div>
+  {{/if}}
   {{> _header}}
   <div class="container">
     <img class="cover" src="images/cover.png">
     <!-- Slideshow container -->
     <div class="slideshow-container">
-
         <!-- Full-width images with number and caption text -->
         <div class="mySlides fade">
         <div class="numbertext">1 / 3</div>

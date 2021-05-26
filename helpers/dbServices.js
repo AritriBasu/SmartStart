@@ -94,10 +94,10 @@ function returnStartup(email, type, next){
 function returnStartupDetails(email, next){
 
     let query = 
-    "SELECT startupName, startupEmail, startupCIN, startupStage, startupNature, startupWebsiteLink, startupDetails FROM Startup where startupEmail=?;";
+    "SELECT startupName, startupEmail, startupCIN, startupStage, startupNature, startupWebsiteLink, startupDetails, startupLogo FROM Startup where startupEmail=?;";
     
     let query2 = 
-    "SELECT Intern.internEmail, internName, department, DOA from AppliesTo, Intern where Intern.internEmail = AppliesTo.internEmail AND startupEmail=?;";
+    "SELECT Intern.internEmail, internName, department, DOA from AppliesTo, Intern where Intern.internEmail = AppliesTo.internEmail AND startupEmail=? AND status = 'P';";
 
     let query3 = 
     "SELECT Investor.companyEmail, DOI, companyName, companyType from InvestsIn, Investor where InvestsIn.companyEmail=Investor.companyEmail and InvestsIn.startupEmail=?;";
@@ -130,7 +130,7 @@ function returnInternDetails(email, next){
     "SELECT internName, internEmail, college, department, qualification, collegeDegree, internDOB, graduationYear from Intern where internEmail=?;";
     
     let query2 = 
-    "SELECT Startup.startupEmail, DOA, startupName from Startup, AppliesTo where Startup.startupEmail=AppliesTo.startupEmail and internEmail=?;"
+    "SELECT Startup.startupEmail, DOA, startupName, status from Startup, AppliesTo where Startup.startupEmail=AppliesTo.startupEmail and internEmail=?;"
     con.query(query, [email],function(err, result){
         if(err){
             console.log(err);
@@ -250,6 +250,19 @@ function insertInvestApplication(investorEmail, DOI, startupEmail, next){
 } 
 
 
+function updateApplicationStatus(internEmail, startupEmail, status, next){
+    let query =
+    "Update AppliesTo Set status = ? WHERE internEmail = ? AND startupEmail = ?;"
+
+    con.query(query, [status, internEmail, startupEmail], function(err){
+        if(err){
+            console.log(err);
+        }else {
+            next();
+        }
+    });
+}
+
 module.exports = {
     validateEmail: validateEmail,
     insertNewInvestor: insertNewInvestor,
@@ -263,5 +276,6 @@ module.exports = {
     insertInternApplication: insertInternApplication,
     insertInvestApplication: insertInvestApplication,
     returnStartupDetails:returnStartupDetails, 
-    returnInternDetails:returnInternDetails
+    returnInternDetails:returnInternDetails,
+    updateApplicationStatus: updateApplicationStatus
 };
