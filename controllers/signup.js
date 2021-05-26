@@ -64,7 +64,8 @@ router.post('/startupSignUp', upload.single("startupLogo"), function(req, res) {
     //startupEmail, startupName, startupCIN, startupPassword, startupStage,startupNature, startupWebsiteLink, startupIndustry, startupLogo,startupDetail
 
     const tempPath = req.file.path;
-    const targetPath = '/userImages/companylogos/' + startupCIN + path.extname(req.file.originalname).toLowerCase();
+    const targetPath = './public/userImages/companylogos/' + startupCIN + path.extname(req.file.originalname).toLowerCase();
+    const dbPath = 'userImages/companylogos/' + startupCIN + path.extname(req.file.originalname).toLowerCase();
     console.log(targetPath);
     console.log(tempPath);
 
@@ -75,7 +76,7 @@ router.post('/startupSignUp', upload.single("startupLogo"), function(req, res) {
         
             db.validateEmail(startupEmail,() => {
                 db.insertNewStartup(startupEmail, startupName, startupCIN, startupPass,startupStage, 
-                                    startupNature, startupWebLink, startupIndustry, targetPath, startupDetails, 
+                                    startupNature, startupWebLink, startupIndustry, dbPath, startupDetails, 
                 () => {
                     
                     db.insertFounders(startupEmail, founders, () => {
