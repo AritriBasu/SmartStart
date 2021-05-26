@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const db = require('../helpers/dbServices');
 
-let type="";
 router.get('/', function(req, res){
     console.log(req.session.email);
     console.log(req.session.type);
@@ -52,12 +51,14 @@ router.get("/logout", function(req, res){
 });
 
 router.get("/account", function(req,res){
+    let type=req.session.type;
     if(type==="investor"){
       try {
-        db.return_investor((result)=>{
-        console.log(result);
+        db.returnInvestor(req.session.email,(result)=>{
         res.render('account_investor', {
-          email: req.session.email
+          compEmail: req.session.email,
+          compType:result[0].companyType,
+          compName:result[0].companyName
         })
       });//db
       } catch (err) {

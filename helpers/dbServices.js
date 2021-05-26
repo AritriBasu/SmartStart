@@ -82,11 +82,11 @@ function returnStartup(next){
     });
 }
 
-function return_investor(next){
+function returnInvestor(email,next){
 
     let query = 
-    "SELECT * FROM Investor";
-    con.query(query,function(err, result){
+    "SELECT companyEmail, companyType, companyName FROM Investor where companyEmail=?";
+    con.query(query,[email],function(err, result){
         if(err){
             console.log(err);
         }else{
@@ -158,5 +158,6 @@ module.exports = {
     insertNewStartup: insertNewStartup,
     insertFounders: insertFounders,
     insertInternPos: insertInternPos,
-    returnStartup:returnStartup
+    returnStartup:returnStartup,
+    returnInvestor:returnInvestor
 };
