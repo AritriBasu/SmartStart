@@ -1,5 +1,5 @@
 body {
-    background-color: #1CADA0;
+    background-color: #DFD3EB;
     background-image:url("../cover_startup.jpeg");
     background-position:center;
     background-size: cover;
@@ -115,7 +115,7 @@ select, #date_field {
     border-radius: 30px;
     border: 1px solid black;
     color: white;
-    background-color: rgb(38, 143, 215);
+    background-color: #7851AE;
     font-size: large;
     font-weight: bold;
     border: none;
@@ -126,7 +126,7 @@ select, #date_field {
 
 div.text_field_container {
     position: relative;
-    border-bottom: 2px solid #adadad;
+    border-bottom: 2px solid #a293b1;
     margin: 10px 0;
     margin-left: 5%;
     margin-right: 5%;
@@ -148,7 +148,7 @@ div.text_field_container label{
     position: absolute;
     top: 50%;
     left:5px;
-    color: #adadad;
+    color: #a293b1;
     transform: translateY(-50%);
     font-size: 16px;
     pointer-events: none;
@@ -162,7 +162,7 @@ div.text_field_container span::before {
     left: 0;
     width: 0%;
     height: 2px;
-    background-color: #2691d9;
+    background-color: #7851AE;
     transition: .5s;
 }
 
@@ -170,7 +170,7 @@ div.text_field_container input:focus ~label,
 div.text_field_container input:not(:placeholder-shown):invalid ~label,
 div.text_field_container input:valid ~label{
     top: -3px;
-    color: #2691d9;
+    color: #7851AE;
 }
 
 div.text_field_container input:focus ~span::before{

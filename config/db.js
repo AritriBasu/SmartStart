@@ -4,7 +4,7 @@ const con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: 'IWPDB',
+    database: 'IWPDB1',
     multipleStatements: true
 });
 
