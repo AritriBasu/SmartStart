@@ -27,7 +27,7 @@
                         <a href="{{this.startupWebsiteLink}}"><button class="card-btn">Visit <span>&rarr;</span></button></a>
                         {{#if ../buttonData.display}}
                             <a href = "{{../buttonData.label}}"> 
-                                <button class="card-btn" >{{../buttonData.label}}</button>
+                                <button class="card-btn" id="send">{{../buttonData.label}}</button>
                             </a>
                         {{/if}}
                     </div>
@@ -36,6 +36,12 @@
              {{/each}}
          </div>
     </div>
+    <script>
+        $("#send").click(function() {
+            $.get("{{buttonData.link}}", { startup:  }) 
+        });
+    </script>
+
 </body>
 
 </html>
