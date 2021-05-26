@@ -62,7 +62,11 @@
         </li>
         <li><a href="/">Home</a></li>
         <li><a href="/home">Startups</a></li>
-        <li><a href="/account">Dashboard</a></li>
+
+        {{#if headerData.accData.display}}
+            <li><a href="/account">Dashboard</a></li>
+        {{/if}}
+        
         <li><a href="#contact">Contact</a></li>
         <li class="push"><a href="{{headerData.link}}">{{headerData.label}}</a></li>
     </ul>

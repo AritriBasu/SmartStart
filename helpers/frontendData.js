@@ -1,15 +1,42 @@
 const { truncate } = require("fs");
+const { get } = require("https");
+
+
+function getAccountData(ses){
+    if(ses.type === "intern"){
+        return{
+            display: true,
+        };
+
+    }else if(ses.type === "investor"){
+        return{
+            display: true,
+        };
+
+    }else if(ses.type === "startup"){
+        return{
+            display: true,
+        };
+
+    }else {
+        return { display:false };
+    }
+}
 
 function getHeaderLoginData(ses){
+    let accData = getAccountData(ses);
+
     if(ses === undefined || ses.email === undefined){
         return {
             link: "/login",
-            label: "Login"
+            label: "Login",
+            accData: accData
         };
     }else {
         return {
             link: "/logout",
-            label: "Logout"
+            label: "Logout",
+            accData: accData
         };
     }
 }
